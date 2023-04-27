@@ -1,0 +1,26 @@
+.notfound_content{
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+}
+
+.notfound_title {
+    margin-top: 80px;
+    margin-bottom: 60px;
+}
+
+.notfound_button {
+    font-family: 'Inter';
+    font-weight: 500;
+    font-size: 18px;
+    color: #FFFFFF;
+    text-decoration: none;
+    text-align: center;
+    background: #5970FF;
+    border-radius: 5px;
+    border: none;
+    width: 140px;
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: .3s ease;
+}

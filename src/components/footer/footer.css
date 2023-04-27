@@ -1,0 +1,30 @@
+.footer {
+    background: #029491;
+}
+
+.footer_item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.footer_text {
+    font-size: 14px;
+    line-height: 17px;
+    text-align: right;
+    color: #FFFFFF;
+    width: 190px;
+}
+
+.footer_text p a{
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+@media (max-width: 500px) {
+    .footer_text {
+        font-size: 12px;
+        line-height: 17px;
+        width: 160px;
+    }
+}

@@ -1,0 +1,145 @@
+.registration_content {
+    display: flex;
+    align-items: center;
+    padding-top: 20px;
+    margin-bottom: 50px;
+}
+
+.registration_text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.registration_title {
+    font-size: 34px;
+    line-height: 36px;
+    letter-spacing: 0.02em;
+    width: 650px;
+}
+
+.registration_image {
+    width: 300px;
+    height: 300px;
+}
+
+.registration_form {
+    margin-left: 80px;
+}
+
+.lock_img {
+    margin: -10px 0 -30px -30px;
+    width: 60px;
+    height: 75px;
+}
+
+.registration_img_mobile {
+    display: none;
+}
+
+@media (max-width: 1200px) {
+    .registration_title {
+        font-size: 32px;
+        width: 600px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .registration_title {
+        font-size: 30px;
+        width: 560px;
+    }
+
+    .registration_image {
+        width: 260px;
+        height: 260px;
+    }
+
+    .registration_form {
+        margin-left: 40px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .registration_content {
+        padding-top: 0px;
+    }
+
+    .registration_title {
+        font-size: 26px;
+        line-height: 30px;
+        width: 520px;
+    }
+
+    .registration_image{
+        width: 220px;
+        height: 220px;
+    }
+
+    .registration_form {
+        margin-left: 30px;
+    }
+
+    .lock_img {
+        margin: -10px 0 -30px -30px;
+        width: 50px;
+        height: 65px;
+    }
+}
+
+@media (max-width: 850px) {
+    .registration_title {
+        font-size: 24px;
+        line-height: 28px;
+        width: 480px;
+    }
+
+    .registration_form {
+        margin-left: 10px;
+    }
+
+    .registration_content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .registration_image{
+        display: none;
+    }
+
+    .registration_form {
+        margin-left: 0px;
+        margin-top: 20px;
+    }
+
+    .registration_img_mobile{
+        display: block;
+        width: 300px;
+        height: 300px;
+        margin: 20px auto;
+    }
+}
+
+@media (max-width: 550px) {
+    .registration_title {
+        font-size: 22px;
+        line-height: 26px;
+        width: 420px;
+    }
+
+    .registration_img_mobile{
+        width: 260px;
+        height: 260px;
+    }
+}
+
+@media (max-width: 450px) {
+    .registration_title {
+        font-size: 20px;
+        line-height: 24px;
+        width: 100%;
+    }
+}

@@ -1,0 +1,238 @@
+.header_list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header_nav_logo {
+    display: none;
+}
+
+.header_nav {
+    display: block;
+    align-items: center;
+}
+
+.header_nav_form {
+    display: none;
+}
+
+.header_nav_items {
+    display: flex;
+}
+
+.header_nav_items_link{
+    font-family: 'Inter';
+    font-size: 14px;
+    text-decoration: none;
+    color: #000;
+    margin-right: 49px;
+    transition: .3s ease;
+}
+
+.header_nav_items_link:hover{
+    opacity: .7;
+}
+
+.header_nav_items_link:last-child{
+    margin-right: 0;
+}
+
+.header_form_subtext{
+    font-family: 'Inter';
+    font-size: 14px;
+    color: #000000;
+    opacity: 0.4;
+    text-decoration: none;
+    margin-right: 38px;
+    transition: .3s ease;
+}
+
+.header_form_subtext:hover{
+    opacity: .7;
+}
+
+.header_button {
+    font-family: 'Inter';
+    font-weight: 500;
+    font-size: 14px;
+    border: none;
+    text-align: center;
+    background-color: #7CE3E1;
+    color: #000;
+    border-radius: 5px;
+    padding: 4px 10px;
+    cursor: pointer;
+    text-decoration: none;
+    position: relative;
+    transition: .3s ease;
+}
+
+.header_button:hover{
+    background-color: #74d4d2;
+}
+
+.header_button::before{
+    position: absolute;
+    content: '';
+    width: 2px;
+    height: 26px;
+    background: #029491;
+    opacity: 0.6;
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+    top: 0;
+    left: -20px;
+}
+
+.header_burger {
+    display: none;
+    position: relative;
+    width: 36px;
+    height: 22px;
+    cursor: pointer;
+}
+
+.burger_line {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    left: 0;
+    background-color: #029491;
+}
+
+.burger_line_first {
+    top: 0;
+}
+
+.burger_line_second {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.burger_line_third {
+    bottom: 0;
+}
+
+@media (max-width: 800px) {
+    .header_burger {
+        display: block;
+    }
+
+    .header_form {
+        display: none;
+    }
+
+    .header_nav_form {
+        display: block;
+    }
+
+    .header_nav_logo {
+        display: block;
+        margin-left: 20px;
+    }
+
+    .header_nav {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        transform: translateX(100%);
+        z-index: 9;
+        background-color: #029491;
+        transition: .2s linear;
+    }
+
+    .header_nav_active {
+        transform: translateX(0);
+    }
+
+    .header_nav_items {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-top: 100px;
+    }
+
+    .header_nav_items_link{
+        font-size: 32px;
+        font-weight: 500;
+        margin-top: 22px;
+        margin-right: 0;
+        color: #fff;
+        text-align: center;
+    }
+
+    .header_nav_close {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        top: 60px;
+        left: 90%;
+        z-index: 50;
+    }
+
+    .header_nav_close_line {
+        display: block;
+        width: 100%;
+        height: 3px;
+        background-color: #fff;
+        position: absolute;
+        top: 0;
+    }
+
+    .header_nav_close_line:first-child {
+        transform: translateY(-50%) rotate(45deg);
+    }
+
+    .header_nav_close_line:last-child {
+        transform: translateY(-50%) rotate(-45deg);
+    }
+
+    .header_nav_form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 80px;
+    }
+
+    .header_button {
+        font-size: 20px;
+        width: 260px;
+        height: 30px;
+        margin-top: 25px;
+        padding: 16px 0;
+    }
+
+    .header_form_subtext {
+        font-size: 18px;
+        margin-right: 0;
+        font-weight: 500;
+        color: #fff;
+        opacity: 0.4;
+    }
+
+}
+
+@media (max-width: 450px) {
+    .header_nav_items {
+        margin-top: 60px;
+    }
+
+    .header_nav_items_link{
+        font-size: 26px;
+    }
+
+    .header_nav_close {
+        left: 87%;
+    }
+
+    .header_button {
+        font-size: 20px;
+        width: 260px;
+        height: 30px;
+        margin-top: 25px;
+        padding: 12px 0;
+    }
+}
