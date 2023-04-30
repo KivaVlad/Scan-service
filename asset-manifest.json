@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Scan-service/static/css/main.f8ea2c16.css",
-    "main.js": "/Scan-service/static/js/main.c0d8d672.js",
+    "main.js": "/Scan-service/static/js/main.849c6cc7.js",
     "static/media/Ferry-Black.eot": "/Scan-service/static/media/Ferry-Black.49a7388dcb2ce51cda59.eot",
     "static/media/Ferry-Black.ttf": "/Scan-service/static/media/Ferry-Black.5360f215b842ff11440a.ttf",
     "static/media/Characters.jpg": "/Scan-service/static/media/Characters.fc446e87b8be48e48b8a.jpg",
@@ -15,10 +15,10 @@
     "static/media/slick.woff": "/Scan-service/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/Scan-service/index.html",
     "main.f8ea2c16.css.map": "/Scan-service/static/css/main.f8ea2c16.css.map",
-    "main.c0d8d672.js.map": "/Scan-service/static/js/main.c0d8d672.js.map"
+    "main.849c6cc7.js.map": "/Scan-service/static/js/main.849c6cc7.js.map"
   },
   "entrypoints": [
     "static/css/main.f8ea2c16.css",
-    "static/js/main.c0d8d672.js"
+    "static/js/main.849c6cc7.js"
   ]
 }
