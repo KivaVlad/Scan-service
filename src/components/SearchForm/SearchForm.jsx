@@ -5,10 +5,10 @@ const SearchForm = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const onSubmit = (data) => console.log(data);
 
-    const errorFormStyle = {
+    const errorSearchFormStyle = {
         fontSize: '10px',
         color: '#FF5959',
-        marginTop: '6px',
+        paddingTop: '6px',
         marginLeft: '20px'
     };
 
@@ -25,9 +25,9 @@ const SearchForm = () => {
                             type='number'
                         />
                         <div className='search_errors_form_string'>
-                            {errors.company?.type === 'required' && <div style={errorFormStyle} role="alert">Введите корректные данные</div>}
-                            {errors.company?.type === 'minLength' && <div style={errorFormStyle} role="alert">Введите корректные данные</div>}
-                            {errors.company?.type === 'maxLength' && <div style={errorFormStyle} role="alert">Введите корректные данные</div>}
+                            {errors.company?.type === 'required' && <div style={errorSearchFormStyle} role="alert">Введите корректные данные</div>}
+                            {errors.company?.type === 'minLength' && <div style={errorSearchFormStyle} role="alert">Введите корректные данные</div>}
+                            {errors.company?.type === 'maxLength' && <div style={errorSearchFormStyle} role="alert">Введите корректные данные</div>}
                         </div>
 
                         <h3 className='search_form_text'>Тональность</h3>
@@ -46,9 +46,9 @@ const SearchForm = () => {
                             type='number'
                         />
                         <div className='search_errors_form_string'>
-                            {errors.number?.type === 'required' && <div style={errorFormStyle} role="alert">Обязательное поле</div>}
-                            {errors.number?.type === 'minLength' && <div style={errorFormStyle} role="alert">Обязательное поле</div>}
-                            {errors.number?.type === 'maxLength' && <div style={errorFormStyle} role="alert">Обязательное поле</div>}
+                            {errors.number?.type === 'required' && <div style={errorSearchFormStyle} role="alert">Обязательное поле</div>}
+                            {errors.number?.type === 'minLength' && <div style={errorSearchFormStyle} role="alert">Обязательное поле</div>}
+                            {errors.number?.type === 'maxLength' && <div style={errorSearchFormStyle} role="alert">Обязательное поле</div>}
                         </div>
 
                         <h3 className='search_form_text'>Диапазон поиска*</h3>

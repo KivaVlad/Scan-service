@@ -1,7 +1,8 @@
 .search_content {
     display: flex;
     justify-content: space-between;
-    height: 100vh;
+    padding-top: 20px;
+    margin-bottom: 50px;
 }
 
 .search_title {
@@ -46,7 +47,6 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding-bottom: 400px;
     }
 
     .search_content_images {
@@ -84,10 +84,6 @@
     .search_content_images_bottom_ch {
         width: 300px;
     }
-
-    .search_content {
-        padding-bottom: 300px;
-    }
 }
 
 @media (max-width: 400px) {
@@ -97,9 +93,5 @@
 
     .search_content_images_bottom_ch {
         width: 260px;
-    }
-
-    .search_content {
-        padding-bottom: 160px;
     }
 }
