@@ -1,7 +1,5 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import axios from "axios";
-import { useMutation } from "react-query";
 
 import { API_BASE_URL } from "../../config";
 
@@ -11,30 +9,28 @@ import yandexImg from './images/yandex.png';
 import css from './loginform.css';
 
 const LoginForm = () => {
+    const [registerData, setRegisterData] = useState({
+        login: '',
+        password: '',
+    });
+
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const onSubmit = (data) => console.log(data);
+    function onSubmit(data) {
+        fetch(`${API_BASE_URL}/api/v1/account/login`, {
+            method: 'POST',
+            headers: {
+                'accept': 'application/json',
+                'Content-Type':' application/json-patch+json',
+            },
+            body: JSON.stringify(data),
+        })
+        .then(responce => responce.json())
+        .then(data => {
+            console.log(data);
+        })
+    }
 
-    const [login, setLogin] = useState('');
-    const [password, setPassword] = useState('');
 
-    const {mutate, isLoading} = useMutation(
-        'login',
-        () => 
-            axios.post(
-                `${API_BASE_URL}/api/v1/account/login`,
-                { login, password },
-                {
-                    headers: 'accept: application/json',
-                    headers: 'Content-Type: application/json-patch+json',
-                }
-            ),
-            {
-                
-            }
-    );
-
-    
-    
     const errorFormStyle = {
         fontSize: '12px',
         color: '#FF5959',
@@ -54,8 +50,6 @@ const LoginForm = () => {
                 {...register("username", { required: true })} 
                 aria-invalid={errors.text ? "true" : "false"} 
                 type='text'
-                value={login}
-                onChange={e => setLogin(e.target.value)}
             />
             <div className='errors_form_string'>
                 {errors.username?.type === 'required' && <div style={errorFormStyle} role="alert">Введите корректные данные</div>}
@@ -66,22 +60,12 @@ const LoginForm = () => {
                 {...register("password", { required: true })} 
                 aria-invalid={errors.password ? "true" : "false"}
                 type="password" 
-                value={password}
-                onChange={e => setPassword(e.target.value)}
             />
             <div className='errors_form_string'>
                 {errors.password?.type === 'required' && <div style={errorFormStyle} role="alert">Неправильный пароль</div>}
             </div>
 
-            <button
-                onClick={() => mutate()}
-                disabled={isLoading}
-                type='submit' 
-                className='form_button'
-            >
-                Войти
-            </button>
-
+            <button type='submit' className='form_button'>Войти</button>
             <a href='#!' className='form_restore_pass'>Восстановить пароль</a>
         </div>
         <div className='form_links'>
