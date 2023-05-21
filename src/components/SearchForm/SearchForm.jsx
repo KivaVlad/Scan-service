@@ -23,6 +23,7 @@ const SearchForm = () => {
                             {...register("company", { required: true, minLength: 10, maxLength: 10 })} 
                             aria-invalid={errors.number ? "true" : "false"} 
                             type='number'
+                            placeholder="10 цифр"
                         />
                         <div className='search_errors_form_string'>
                             {errors.company?.type === 'required' && <div style={errorSearchFormStyle} role="alert">Введите корректные данные</div>}
@@ -34,8 +35,8 @@ const SearchForm = () => {
                         <select className="search_form_input"
                             {...register("category", { required: true })}>
                             <option value="">Любая</option>
-                            <option value="A">Option A</option>
-                            <option value="B">Option B</option>
+                            <option value="A">Любая</option>
+                            <option value="B">Любая</option>
                         </select>
                         <div className='search_errors_form_string'></div>
 
@@ -44,6 +45,7 @@ const SearchForm = () => {
                             {...register("number", { required: true, minLength: 1, maxLength: 1000 })} 
                             aria-invalid={errors.number ? "true" : "false"} 
                             type='number'
+                            placeholder="От 1 до 1000"
                         />
                         <div className='search_errors_form_string'>
                             {errors.number?.type === 'required' && <div style={errorSearchFormStyle} role="alert">Обязательное поле</div>}
@@ -72,12 +74,14 @@ const SearchForm = () => {
                         {...register("date", { required: true })} 
                         aria-invalid={errors.data ? "true" : "false"} 
                         type='date'
+                        placeholder="Дата начала"
                         />
 
                         <input className="search_form_data_input"
                         {...register("date", { required: true })} 
                         aria-invalid={errors.data ? "true" : "false"} 
                         type='date'
+                        placeholder="Дата конца"
                         />
                     </div>
 
