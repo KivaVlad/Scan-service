@@ -28,14 +28,14 @@
     color: #000;
     margin-right: 49px;
     transition: .3s ease;
-}
 
-.header_nav_items_link:hover{
-    opacity: .7;
-}
+    &:last-child {
+        margin-right: 0;
+    }
 
-.header_nav_items_link:last-child{
-    margin-right: 0;
+    &:hover {
+        opacity: .7;
+    }
 }
 
 .header_form_subtext{
@@ -46,10 +46,10 @@
     text-decoration: none;
     margin-right: 38px;
     transition: .3s ease;
-}
 
-.header_form_subtext:hover{
-    opacity: .7;
+    &:hover {
+        opacity: .7;
+    }
 }
 
 .header_button {
@@ -66,22 +66,22 @@
     text-decoration: none;
     position: relative;
     transition: .3s ease;
-}
 
-.header_button:hover{
-    background-color: #74d4d2;
-}
+    &:hover {
+        background-color: #74d4d2;
+    }
 
-.header_button::before{
-    position: absolute;
-    content: '';
-    width: 2px;
-    height: 26px;
-    background: #029491;
-    opacity: 0.6;
-    transform: matrix(-1, 0, 0, 1, 0, 0);
-    top: 0;
-    left: -20px;
+    &::before {
+        position: absolute;
+        content: '';
+        width: 2px;
+        height: 26px;
+        background: #029491;
+        opacity: 0.6;
+        transform: matrix(-1, 0, 0, 1, 0, 0);
+        top: 0;
+        left: -20px;
+    }
 }
 
 .header_burger {

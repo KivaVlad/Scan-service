@@ -1,33 +1,35 @@
 import { useForm } from "react-hook-form";
-import { useState } from "react";
-
-import { API_BASE_URL } from "../../config";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 import goodleImg from './images/google.png';
 import facebookImg from './images/fb.png';
 import yandexImg from './images/yandex.png';
-import css from './loginform.css';
+import './loginform.scss';
 
 const LoginForm = () => {
-    const [registerData, setRegisterData] = useState({
-        login: '',
-        password: '',
-    });
+    const navigate = useNavigate();
 
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    const { register, formState: { errors }, reset, handleSubmit } = useForm();
+
     function onSubmit(data) {
-        fetch(`${API_BASE_URL}/api/v1/account/login`, {
-            method: 'POST',
-            headers: {
-                'accept': 'application/json',
-                'Content-Type':' application/json-patch+json',
-            },
-            body: JSON.stringify(data),
+        axios.post('https://gateway.scan-interfax.ru/api/v1/account/login', data)
+        .then((response) => {
+            const token = response.data;
+            localStorage.setItem("token", token);
+            reset();
+            toHomePage();
+            console.log(token);
+            alert('Успешный вход');
         })
-        .then(responce => responce.json())
-        .then(data => {
-            console.log(data);
+        .catch((error) => {
+            console.log(error);
+            alert('Пользователь не найден');
         })
+    }
+
+    function toHomePage() {
+        navigate('/');
     }
 
 
@@ -45,17 +47,17 @@ const LoginForm = () => {
             <a href='#!' className='form_header_links'>Зарегистрироваться</a>
         </div>
         <div className='form'>
-            <h3 className='form_text'>Логин или номер телефона:</h3>
+            <h3 className='form_text'>Логин или номер телефона: sf_student1</h3>
             <input
-                {...register("username", { required: true })} 
+                {...register("login", { required: true })} 
                 aria-invalid={errors.text ? "true" : "false"} 
                 type='text'
             />
             <div className='errors_form_string'>
-                {errors.username?.type === 'required' && <div style={errorFormStyle} role="alert">Введите корректные данные</div>}
+                {errors.login?.type === 'required' && <div style={errorFormStyle} role="alert">Введите корректные данные</div>}
             </div>
 
-            <h3 className='form_text'>Пароль:</h3>
+            <h3 className='form_text'>Пароль: 4i2385j</h3>
             <input 
                 {...register("password", { required: true })} 
                 aria-invalid={errors.password ? "true" : "false"}

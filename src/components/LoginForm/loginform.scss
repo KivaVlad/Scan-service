@@ -17,24 +17,24 @@
     letter-spacing: 0.02em;
     color: #C7C7C7;
     position: relative;
-}
 
-.form_header_links::after {
-    position: absolute;
-    content: '';
-    width: calc(100% + 40px);
-    height: 2px;
-    bottom: -8px;
-    left: -20px;
-    background: #C7C7C7;
+    &::after {
+        position: absolute;
+        content: '';
+        width: calc(100% + 40px);
+        height: 2px;
+        bottom: -8px;
+        left: -20px;
+        background: #C7C7C7;
+    }
 }
 
 .form_header_links_active {
     color: #029491;
-}
 
-.form_header_links_active::after{
-    background: #029491;
+    &::after {
+        background: #029491;
+    }
 }
 
 .form {
@@ -77,10 +77,10 @@
     margin-bottom: 12px;
     cursor: pointer;
     transition: .2s ease;
-}
 
-.form_button:active {
-    opacity: 1;
+    &:active {
+        opacity: 1;
+    }
 }
 
 .form_restore_pass {

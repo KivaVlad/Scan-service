@@ -1,6 +1,7 @@
-import css from './home.css';
 import { useNavigate } from 'react-router-dom';
 import FocusOnSelect from "../../components/carousel/Carousel";
+
+import "./home.scss";
 import homeImg from "../../assets/images/home.jpg";
 import homeUserImg from "../../assets/images/home-bachground-user.jpg";
 

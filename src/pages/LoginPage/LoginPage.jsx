@@ -1,4 +1,4 @@
-import css from "./loginPage.css";
+import "./loginPage.scss";
 import LoginForm from "../../components/LoginForm/LoginForm";
 
 import registrImage from "../../assets/images/Characters.jpg";

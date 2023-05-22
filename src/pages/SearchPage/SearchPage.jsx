@@ -1,5 +1,5 @@
 import SearchForm from "../../components/SearchForm/SearchForm";
-import css from "./searchPage.css";
+import "./searchPage.scss";
 
 import searchImg from "../../assets/images/search_group.png";
 import folders from "../../assets/images/Folders.png";

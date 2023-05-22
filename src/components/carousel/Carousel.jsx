@@ -3,7 +3,7 @@ import Slider from 'react-slick';
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import css from './carousel.css';
+import './carousel.scss';
 
 import stopWatch from './items/stopwatch.jpg';
 import loop from './items/loop.jpg';
