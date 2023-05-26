@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
-import css from "./searchForm.css";
+import { useNavigate } from "react-router-dom";
+import "./searchForm.scss";
 
 const SearchForm = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -9,8 +10,12 @@ const SearchForm = () => {
         fontSize: '10px',
         color: '#FF5959',
         paddingTop: '6px',
-        marginLeft: '20px'
     };
+
+    const navigate = useNavigate();
+    function toResultPage() {
+        navigate("/result");
+    }
 
     return(
         <>
@@ -69,23 +74,28 @@ const SearchForm = () => {
                 </div>
 
                 <div className="search_data_container">
-                    <div className="search_data_container_inputs">
-                        <input className="search_form_data_input"
-                        {...register("date", { required: true })} 
-                        aria-invalid={errors.data ? "true" : "false"} 
-                        type='date'
-                        placeholder="Дата начала"
-                        />
+                    <div>
+                        <div className="search_data_container_inputs">
+                            <input className="search_form_data_input"
+                            {...register("date", { required: true })} 
+                            aria-invalid={errors.data ? "true" : "false"} 
+                            type='date'
+                            placeholder="Дата начала"
+                            />
 
-                        <input className="search_form_data_input"
-                        {...register("date", { required: true })} 
-                        aria-invalid={errors.data ? "true" : "false"} 
-                        type='date'
-                        placeholder="Дата конца"
-                        />
+                            <input className="search_form_data_input"
+                            {...register("date", { required: true })} 
+                            aria-invalid={errors.data ? "true" : "false"} 
+                            type='date'
+                            placeholder="Дата конца"
+                            />
+                        </div>
+                        <div className="search_errors_form_string">
+                            {errors.date?.type === 'required' && <div style={errorSearchFormStyle} role="alert">Обязательное поле</div>}
+                        </div>
                     </div>
 
-                    <button className="search_form_data_button" type="submit">Поиск</button>
+                    <button onClick={toResultPage} className="search_form_data_button" type="submit">Поиск</button>
                 </div>
             </form>
         </>

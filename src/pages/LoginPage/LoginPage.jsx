@@ -4,7 +4,8 @@ import LoginForm from "../../components/LoginForm/LoginForm";
 import registrImage from "../../assets/images/Characters.jpg";
 import lockImg from "../../assets/images/lock.png";
 
-const LoginPage = () => {
+const LoginPage = (props) => {
+    const {setIsLogged} = props;
 
     return(
         <>
@@ -18,7 +19,7 @@ const LoginPage = () => {
                 </div>
                 <div className='registration_form'>
                   <img className='lock_img' src={lockImg} />
-                  <LoginForm />
+                  <LoginForm setIsLogged={setIsLogged}/>
                 </div>
                   <img className='registration_img_mobile' src={registrImage} />
             </div>

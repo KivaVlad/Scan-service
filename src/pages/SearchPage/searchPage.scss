@@ -49,6 +49,12 @@
         align-items: center;
     }
 
+    .search_form_container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
     .search_content_images {
         margin-top: 40px;
     }
@@ -71,10 +77,6 @@
 }
 
 @media (max-width: 500px) {
-    .search_title {
-        font-size: 22px;
-        line-height: 32px;
-    }
     
     .search_content_subtext {
         font-size: 12px;

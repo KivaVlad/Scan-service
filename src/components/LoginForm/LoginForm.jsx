@@ -1,37 +1,35 @@
 import { useForm } from "react-hook-form";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import api from "../../axios/axios";
 
 import goodleImg from './images/google.png';
 import facebookImg from './images/fb.png';
 import yandexImg from './images/yandex.png';
 import './loginform.scss';
 
-const LoginForm = () => {
+const LoginForm = (props) => {
+    const {setIsLogged} = props;
+
     const navigate = useNavigate();
-
-    const { register, formState: { errors }, reset, handleSubmit } = useForm();
-
-    function onSubmit(data) {
-        axios.post('https://gateway.scan-interfax.ru/api/v1/account/login', data)
-        .then((response) => {
-            const token = response.data;
-            localStorage.setItem("token", token);
-            reset();
-            toHomePage();
-            console.log(token);
-            alert('Успешный вход');
-        })
-        .catch((error) => {
-            console.log(error);
-            alert('Пользователь не найден');
-        })
-    }
-
     function toHomePage() {
         navigate('/');
     }
-
+    
+    const { register, formState: { errors }, reset, handleSubmit } = useForm();
+    function onSubmit(data) {
+        return api.post('/api/v1/account/login', data)
+        .then((response) => {
+            localStorage.setItem("token", response.data.accessToken);
+            localStorage.setItem("expire", response.data.expire);
+            setIsLogged(true);
+            reset();
+            toHomePage();
+        })
+        .catch((error) => {
+            console.log(error);
+            setIsLogged(false);
+        })
+    }
 
     const errorFormStyle = {
         fontSize: '12px',
@@ -43,8 +41,8 @@ const LoginForm = () => {
     return (
       <form onSubmit={handleSubmit(onSubmit)} className='registration_container'>
         <div className='form_header'>
-            <a href='#!' className='form_header_links form_header_links_active'>Войти</a>
-            <a href='#!' className='form_header_links'>Зарегистрироваться</a>
+            <Link to='/login' className='form_header_links form_header_links_active'>Войти</Link>
+            <Link to='*' className='form_header_links'>Зарегистрироваться</Link>
         </div>
         <div className='form'>
             <h3 className='form_text'>Логин или номер телефона: sf_student1</h3>
@@ -68,7 +66,7 @@ const LoginForm = () => {
             </div>
 
             <button type='submit' className='form_button'>Войти</button>
-            <a href='#!' className='form_restore_pass'>Восстановить пароль</a>
+            <Link to='*' className='form_restore_pass'>Восстановить пароль</Link>
         </div>
         <div className='form_links'>
             <h3 className='form_text'>Войти через:</h3>
@@ -82,4 +80,4 @@ const LoginForm = () => {
     );
 }
 
-export default LoginForm
+export default LoginForm;

@@ -5,13 +5,17 @@ import "./home.scss";
 import homeImg from "../../assets/images/home.jpg";
 import homeUserImg from "../../assets/images/home-bachground-user.jpg";
 
-const Home = () => {
+const Home = ({isLogged}) => {
+
   const navigate = useNavigate();
-
-  const toSearch = () => {
-    navigate('/search', {replace: true});
+  function toSearchPage() {
+    if (isLogged) {
+      navigate("/search")
+    } else {
+      alert('Для продолжения необходимо авторизоваться');
+    }
   }
-
+  
   return (
     <>
         <div className='container'>
@@ -23,7 +27,7 @@ const Home = () => {
                     <p className='home_header_subtext'>
                         Комплексный анализ публикаций, получение данных<br/> в формате PDF на электронную почту.
                     </p>
-                    <button onClick={toSearch} className='home_header_button'>Запросить данные</button>
+                    <button onClick={toSearchPage} className='home_header_button'>Запросить данные</button>
                 </div>
                 <div className='home_header_img'>
                   <img src={homeImg} />
@@ -31,7 +35,7 @@ const Home = () => {
             </div>
 
             <div className='home_carousel'>
-                <h1 className='title'>Почему именно мы</h1>
+                <h1 className='title home_carousel_title'>Почему именно мы</h1>
                 <FocusOnSelect />
             </div>
 
@@ -49,7 +53,28 @@ const Home = () => {
               <h1 className='title'>наши тарифы</h1>
               <div className='rates_cards'>
 
-                <div className='rates_card rates_card_beginner'>
+              
+                {isLogged ?
+                <div className='rates_card_active'>
+                  <div className='rates_header'>
+                    <div className='rates_header_text'>
+                      <div className='rates_header_text_title'>Beginner</div>
+                      <p>Для небольшого исследования</p>
+                    </div>
+                    <div className='rates_header_img'></div>
+                  </div>
+                  <div className='rates_card_price'>799 ₽ <span>1 200 ₽</span><div className='rates_card_tarif'>Текущий тариф</div></div>
+                  <div className='rates_card_price_text'>или 150 ₽/мес. при рассрочке на 24 мес.</div>
+                  <div className='rates_card_subtitle'>В тариф входит:</div>
+                  <ul className='rates_card_list'>
+                    <li>Безлимитная история запросов</li>
+                    <li>Безопасная сделка</li>
+                    <li>Поддержка 24/7</li>
+                  </ul>
+                  <button className='rates_card_button_active'>Перейти в личный кабинет</button>
+                </div>
+                :
+                <div className='rates_card'>
                   <div className='rates_header'>
                     <div className='rates_header_text'>
                       <div className='rates_header_text_title'>Beginner</div>
@@ -67,7 +92,7 @@ const Home = () => {
                   </ul>
                   <button className='rates_card_button'>Подробнее</button>
                 </div>
-
+                }
                 <div className='rates_card rates_card_pro'>
                   <div className='rates_header rates_header_pro'>
                     <div className='rates_header_text'>
