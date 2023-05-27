@@ -1,26 +1,35 @@
 import { useEffect, useState } from "react";
 import api from "../../../axios/axios";
 import "./index.scss";
+import { Loader } from "../../loader/Loader";
 
 const AccountInfo = () => {
-    const [companys, setCompanys] = useState({});
+    const [items, setItems] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         api.get('/api/v1/account/info')
-        .then((response) => {
-            setCompanys(response.data.eventFiltersInfo);
-            console.log(response.data.eventFiltersInfo);
+        .then(response => {
+            setItems(response.data.eventFiltersInfo);
+            setIsLoading(false);
         })
         .catch(error => {
             console.log(error);
         });
-    }, []);
+    }, [setItems]);
 
     return(
         <div className="account_info_container">
-            <div className="header_account_info_text">Использовано компаний</div>
-            <div className="header_account_info_text">Лимит по компаниям</div>
-            
+            {isLoading ? 
+                <div className="account_loader_container">
+                    <Loader />
+                </div>
+            :
+                <>
+                    <div className="header_account_info_text">Использовано компаний <span>{items.usedCompanyCount}</span></div>
+                    <div className="header_account_info_text">Лимит по компаниям <span className="header_account_info_span">{items.companyLimit}</span></div>  
+                </>
+            }
         </div>
     )
 }

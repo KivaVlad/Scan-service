@@ -28,9 +28,13 @@
     transition: .3s ease;
 }
 
-.home_header_img img{
-    width: 600px;
-    height: 540px;
+.home_header_img {
+    width: 50%;
+    
+    img{
+        width: 100%;
+        height: auto;
+    }
 }
 
 .home_carousel {
@@ -276,6 +280,80 @@
     .vector_sm {
         left: 300px;
     }
+
+    .rates_header_img {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .rates_header_img_pro {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .rates_header_img_business {
+        width: 70px;
+        height: 60px;
+    }
+    
+    .rates_header_text_title {
+        font-size: 22px;
+    }
+    
+    .rates_header_text_title_business {
+        font-size: 22px;
+    }
+    
+    .rates_header_text p {
+        font-size: 14px;
+    }
+    
+    .rates_card_price {
+        font-size: 22px;
+        margin: 30px 0px 10px 20px;
+    }
+    
+    .rates_card_price span {
+        font-size: 22px;
+        margin-left: 16px;
+    }
+    
+    .rates_card_price_business {
+        margin-bottom: 79px;
+    }
+    
+    .rates_card_price_text {
+        font-size: 14px;
+        margin-left: 30px;
+        margin-bottom: 50px;
+    }
+    
+    .rates_card_subtitle {
+        font-size: 18px;
+    }
+    
+    .rates_card_list {
+        font-size: 14px;
+        line-height: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .rates_card_list li {
+        padding-left: 20px;
+        position: relative;
+        margin: 0 10px;
+    }
+    
+    .rates_card_button {
+        width: 85%;
+        font-size: 14px;
+        padding: 18px 0;
+        margin: 20px 30px;
+    }
+
+    .rates_card_button_active {
+        font-size: 14px;
+    }
 } 
 
 @media (max-width: 1100px) {
@@ -310,6 +388,58 @@
         height: 65px;
         left: 260px;
         bottom: 35%;
+    }
+
+    .rates_cards {
+        gap: 25px;
+    }
+    
+    .rates_card_price {
+        font-size: 20px;
+        margin: 30px 0px 10px 20px;
+    }
+    
+    .rates_card_price span {
+        font-size: 20px;
+        margin-left: 12px;
+    }
+    
+    .rates_card_price_business {
+        margin-bottom: 66px;
+    }
+    
+    .rates_card_price_text {
+        font-size: 12px;
+        margin-left: 20px;
+        margin-bottom: 40px;
+    }
+    
+    .rates_card_subtitle {
+        font-size: 18px;
+        margin-left: 20px;
+    }
+    
+    .rates_card_list {
+        font-size: 12px;
+        line-height: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .rates_card_list li {
+        padding-left: 20px;
+        margin: 0 10px;
+    }
+    
+    .rates_card_button {
+        width: 85%;
+        font-size: 14px;
+        padding: 18px 0;
+        margin: 20px;
+    }
+
+    .rates_card_button_active {
+        font-size: 14px;
+        width: 85%;
     }
 }
 
@@ -358,6 +488,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        width: 100%;
     }
 
     .home_header_img img{
@@ -372,6 +503,84 @@
 
     .home_header_subtext {
         margin-bottom: 30px;
+    }
+
+    .rates_header_img {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .rates_header_img_pro {
+        width: 90px;
+        height: 90px;
+    }
+    
+    .rates_header_img_business {
+        width: 80px;
+        height: 70px;
+    }
+    
+    .rates_header_text_title {
+        font-size: 26px;
+    }
+    
+    .rates_header_text_title_business {
+        font-size: 26px;
+    }
+    
+    .rates_header_text p {
+        font-size: 16px;
+    }
+    
+    .rates_card_price {
+        font-size: 26px;
+        margin: 30px 0px 10px 30px;
+    }
+    
+    .rates_card_price span {
+        font-size: 23px;
+        margin-left: 16px;
+    }
+    
+    .rates_card_price_business {
+        margin-bottom: 79px;
+    }
+    
+    .rates_card_price_text {
+        font-size: 16px;
+        margin-left: 30px;
+        margin-bottom: 50px;
+    }
+    
+    .rates_card_subtitle {
+        font-size: 20px;
+        margin-left: 30px;
+    }
+    
+    .rates_card_list {
+        font-size: 16px;
+        line-height: 22px;
+        margin-bottom: 30px;
+    }
+    
+    .rates_card_list li {
+        padding-left: 20px;
+        margin: 0 10px;
+    }
+    
+    .rates_card_button {
+        width: 85%;
+        font-size: 16px;
+        padding: 18px 0;
+        margin: 20px 30px;
+        cursor: pointer;
+    }
+    
+    .rates_card_button_active {
+        width: 85%;
+        font-size: 16px;
+        padding: 18px 0;
+        margin: 20px 30px;
     }
 }
 
@@ -418,6 +627,13 @@
     .home_header_img img{
         height: 360px;
     }
+
+    .rates_card_tarif{
+        width: 70px;
+        height: 10px;
+        font-size: 8px;
+        padding: 3px 10px;
+    }
 }
 
 @media (max-width: 400px) {
@@ -426,6 +642,81 @@
     }
 
     .home_user_img img{
-        height: 320px;
+        height: 290px;
+    }
+
+    .rates_header_img {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .rates_header_img_pro {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .rates_header_img_business {
+        width: 70px;
+        height: 60px;
+    }
+    
+    .rates_header_text_title {
+        font-size: 22px;
+    }
+    
+    .rates_header_text_title_business {
+        font-size: 22px;
+    }
+    
+    .rates_header_text p {
+        font-size: 14px;
+    }
+    
+    .rates_card_price {
+        font-size: 22px;
+        margin: 30px 0px 10px 20px;
+    }
+    
+    .rates_card_price span {
+        font-size: 22px;
+        margin-left: 16px;
+    }
+    
+    .rates_card_price_business {
+        margin-bottom: 79px;
+    }
+    
+    .rates_card_price_text {
+        font-size: 12px;
+        margin-left: 20px;
+        margin-bottom: 50px;
+    }
+    
+    .rates_card_subtitle {
+        font-size: 18px;
+    }
+    
+    .rates_card_list {
+        font-size: 14px;
+        line-height: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .rates_card_list li {
+        padding-left: 20px;
+        position: relative;
+        margin: 0 10px;
+    }
+    
+    .rates_card_button {
+        width: 80%;
+        font-size: 14px;
+        padding: 18px 0;
+        margin: 20px 30px;
+    }
+
+    .rates_card_button_active {
+        font-size: 14px;
+        width: 80%;
     }
 }

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: " https://gateway.scan-interfax.ru/"
+    baseURL: "https://gateway.scan-interfax.ru/"
 })
 
 api.interceptors.request.use((config) => {
