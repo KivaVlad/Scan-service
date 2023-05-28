@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import Layout from "./components/Layout/Layout";
 import HomePage from "./pages/HomePage/Home";
@@ -10,6 +10,14 @@ import Result from "./pages/ResultPage/Result";
 
 function App() {
   const [isLogged, setIsLogged] = useState(false);
+
+  useEffect(() => {
+    if(localStorage.getItem("token") || localStorage.getItem("expire") !== null) {
+      setIsLogged(true);
+    } else {
+      setIsLogged(false);
+    }
+  })
 
   return (
     <>

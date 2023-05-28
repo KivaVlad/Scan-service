@@ -2,6 +2,6 @@ import "./loader.scss";
 
 export const Loader = () => {
     return(
-        <div class="lds-dual-ring"></div>
+        <div className="lds-dual-ring"></div>
     )
 }

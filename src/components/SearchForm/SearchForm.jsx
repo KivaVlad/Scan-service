@@ -63,13 +63,13 @@ const SearchForm = () => {
                     </div>
 
                     <div className="search_wrapper_checkboxs">
-                        <div className="search_checkbox_box"><input type="checkbox" /><label className="search_checkbox_text" >Признак максимальной полноты</label></div>
-                        <div className="search_checkbox_box"><input type="checkbox" /><label className="search_checkbox_text" >Упоминания в бизнес-контексте</label></div>
-                        <div className="search_checkbox_box"><input type="checkbox" /><label className="search_checkbox_text" >Главная роль в публикации</label></div>
-                        <div className="search_checkbox_box"><input type="checkbox" /><label className="search_checkbox_text" >Публикации только с риск-факторами</label></div>
-                        <div className="search_checkbox_box"><input type="checkbox" /><label className="search_checkbox_text" >Включать технические новости рынков</label></div>
-                        <div className="search_checkbox_box"><input type="checkbox" /><label className="search_checkbox_text" >Включать анонсы и календари</label></div>
-                        <div className="search_checkbox_box"><input type="checkbox" /><label className="search_checkbox_text" >Включать сводки новостей</label></div>
+                        <div className="search_checkbox_box"><input type="checkbox"/><label className="search_checkbox_text">Признак максимальной полноты</label></div>
+                        <div className="search_checkbox_box"><input type="checkbox"/><label className="search_checkbox_text">Упоминания в бизнес-контексте</label></div>
+                        <div className="search_checkbox_box"><input type="checkbox"/><label className="search_checkbox_text">Главная роль в публикации</label></div>
+                        <div className="search_checkbox_box"><input type="checkbox"/><label className="search_checkbox_text">Публикации только с риск-факторами</label></div>
+                        <div className="search_checkbox_box"><input type="checkbox"/><label className="search_checkbox_text">Включать технические новости рынков</label></div>
+                        <div className="search_checkbox_box"><input type="checkbox"/><label className="search_checkbox_text">Включать анонсы и календари</label></div>
+                        <div className="search_checkbox_box"><input type="checkbox"/><label className="search_checkbox_text">Включать сводки новостей</label></div>
                     </div>
                 </div>
 

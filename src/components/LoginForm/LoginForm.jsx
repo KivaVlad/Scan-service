@@ -8,7 +8,7 @@ import yandexImg from './images/yandex.png';
 import './loginform.scss';
 
 const LoginForm = (props) => {
-    const {setIsLogged} = props;
+    const {setIsLogged} = props
 
     const navigate = useNavigate();
     function toHomePage() {
@@ -26,8 +26,7 @@ const LoginForm = (props) => {
             toHomePage();
         })
         .catch((error) => {
-            console.log(error);
-            setIsLogged(false);
+            alert('Введите корректные данные');
         })
     }
 
