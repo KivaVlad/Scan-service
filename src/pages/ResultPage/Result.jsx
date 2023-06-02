@@ -1,5 +1,5 @@
 import "./result.scss";
-import resultImage from "../../assets/images/result-image-hero.png"
+import resultImage from "../../assets/images/result-image-hero.png";
 
 const Result = () => {
     return(

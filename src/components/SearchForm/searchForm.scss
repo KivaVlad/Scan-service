@@ -83,10 +83,10 @@
     padding: 14px 80px;
     margin-left: 150px;
     transition: .2s ease;
-}
 
-.search_form_data_button:hover, .search_form_data_button:active {
-    background-color: #3a4ab2;
+    &:active {
+        background-color: #3a4ab2;
+    }
 }
 
 @media (max-width: 1200px) {
