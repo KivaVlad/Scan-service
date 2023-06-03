@@ -14,6 +14,17 @@ body {
   padding: 0;
   font-family: 'Inter', sans-serif;
   font-weight: 400;
+  scrollbar-width: 10px;
+  scrollbar-color: #c1c1c1;
+}
+
+body::-webkit-scrollbar{
+  width: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #c1c1c1;
+  border-radius: 20px;
 }
 
 .container {

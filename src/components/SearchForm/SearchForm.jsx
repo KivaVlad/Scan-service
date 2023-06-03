@@ -7,7 +7,8 @@ import { useState } from "react";
 const SearchForm = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const onSubmit = (data) => {
-        objectSearch(data);
+      histograms(data);
+      objectSearch(data);
     }
     
     function histograms() {
@@ -78,94 +79,69 @@ const SearchForm = () => {
     function objectSearch() {
         api
       .post("/api/v1/objectsearch", {
-        limit: limit,
-        sortType: "none",
-        sortDirectionType: "desc",
-        dedupClusterId: "string",
         issueDateInterval: {
-            startDate: startDate,
-            endDate: endDate
+          startDate: startDate,
+          endDate: endDate,
         },
         searchContext: {
-            targetSearchEntitiesContext: {
+          targetSearchEntitiesContext: {
             targetSearchEntities: [
-                {
+              {
                 type: "company",
-                Inn: inn,
-                }
+                sparkId: null,
+                entityId: null,
+                inn: inn,
+                maxFullness: maxFullness,
+                inBusinessNews: inBusinessNews,
+              },
             ],
             onlyMainRole: onlyMainRole,
             tonality: tonality,
             onlyWithRiskFactors: onlyWithRiskFactors,
             riskFactors: {
-                and: [{id: 0}],
-                or: [{id: 0}],
-                not: [{id: 0}]
+              and: [],
+              or: [],
+              not: [],
             },
             themes: {
-                and: [{tonality: tonality, entityId: 0}],
-                or: [{tonality: tonality, entityId: 0}],
-                not: [{tonality: tonality, entityId: 0}]
-            }
+              and: [],
+              or: [],
+              not: [],
             },
-            searchEntitiesFilter: {
-            and: [{type: "company"}],
-            or: [{type: "company"}],
-            not: [{type: "company"}
-            ]
-            },
-            locationsFilter: {
-            and: [{countryCode: "string", regionCode: 0}],
-            or: [{countryCode: "string", regionCode: 0}],
-            not: [{countryCode: "string", regionCode: 0}]
-            },
-            themesFilter: {
-            and: [
-                {
-                entityId: 0
-                }
-            ],
-            or: [
-                {
-                entityId: 0
-                }
-            ],
-            not: [
-                {
-                entityId: 0
-                }
-            ]
-            }
+          },
+          themesFilter: {
+            and: [],
+            or: [],
+            not: [],
+          },
         },
         searchArea: {
-            includedSources: [
-            0
-            ],
-            excludedSources: [
-            0
-            ],
-            includedSourceGroups: [
-            0
-            ],
-            excludedSourceGroups: [
-            0
-            ]
+          includedSources: [],
+          excludedSources: [],
+          includedSourceGroups: [],
+          excludedSourceGroups: [],
         },
         attributeFilters: {
-            excludeTechNews: isTechNews,
-            excludeAnnouncements: isAnnouncement,
-            excludeDigests: isDigest
+          excludeTechNews: isTechNews,
+          excludeAnnouncements: isAnnouncement,
+          excludeDigests: isDigest,
         },
-        similarMode: "none"
+        similarMode: "duplicates",
+        limit: limit,
+        sortType: "sourceInfluence",
+        sortDirectionType: "desc",
+        intervalType: "month",
+        histogramTypes: ["totalDocuments", "riskFactors"],
       })
-      .then((items) => {
-        console.log(items);
+      .then((response) => {
+        console.log(response);
       })
       .catch((error) => {
         console.log(error);
       });
     }
 
+    
     const [inn, setInn] = useState('');
     const [tonality, setTonality] = useState("any");
     const [limit, setLimit] = useState('');
