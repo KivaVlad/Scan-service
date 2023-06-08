@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 import AccountInfo from "./account-info/AccountInfo";
 import "./header.scss";
 
@@ -9,11 +9,13 @@ import footerLogo from "../../assets/images/footer_logo.png";
 
 const Header = (props) => {
   const {isLogged, setIsLogged} = props;
+  const navigate = useNavigate();
   let [activeState, setActiveState] = useState(false);
 
   const handleLogOutBtn = () => {
     setIsLogged(!isLogged);
     localStorage.clear();
+    navigate('/');
   }
  
     return(
@@ -27,8 +29,8 @@ const Header = (props) => {
                     </div>
                     <div className='header_nav_items'>
                       <NavLink to="/" onClick={ () => setActiveState(activeState = !activeState)} className='header_nav_items_link'>Главная</NavLink>
-                      <NavLink to="*" onClick={ () => setActiveState(activeState = !activeState)} className='header_nav_items_link'>Тарифы</NavLink>
-                      <NavLink to="*" onClick={ () => setActiveState(activeState = !activeState)} className='header_nav_items_link'>FAQ</NavLink>
+                      <NavLink to="/search" onClick={ () => setActiveState(activeState = !activeState)} className='header_nav_items_link'>Тарифы</NavLink>
+                      <NavLink to="/result" onClick={ () => setActiveState(activeState = !activeState)} className='header_nav_items_link'>FAQ</NavLink>
                     </div>
                     {isLogged ? 
                     <div className="header_nav_account_info">

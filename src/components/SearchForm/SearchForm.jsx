@@ -4,19 +4,21 @@ import api from "../../axios/axios";
 import "./searchForm.scss";
 import { useState } from "react";
 
-const SearchForm = () => {
+const SearchForm = (props) => {
+  const {setDataInfo} = props;
+
     const { register, formState: { errors }, handleSubmit } = useForm();
     const onSubmit = (data) => {
       histograms(data);
       objectSearch(data);
     }
     
-    function histograms() {
+    function histograms(data) {
         api
       .post("/api/v1/objectsearch/histograms", {
         issueDateInterval: {
-          startDate: startDate,
-          endDate: endDate,
+          startDate: data.startDate,
+          endDate: data.endDate,
         },
         searchContext: {
           targetSearchEntitiesContext: {
@@ -25,14 +27,14 @@ const SearchForm = () => {
                 type: "company",
                 sparkId: null,
                 entityId: null,
-                inn: inn,
-                maxFullness: maxFullness,
-                inBusinessNews: inBusinessNews,
+                inn: data.inn,
+                maxFullness: data.maxFullness,
+                inBusinessNews: data.inBusinessNews,
               },
             ],
-            onlyMainRole: onlyMainRole,
-            tonality: tonality,
-            onlyWithRiskFactors: onlyWithRiskFactors,
+            onlyMainRole: data.onlyMainRole,
+            tonality: data.tonality,
+            onlyWithRiskFactors: data.onlyWithRiskFactors,
             riskFactors: {
               and: [],
               or: [],
@@ -57,90 +59,103 @@ const SearchForm = () => {
           excludedSourceGroups: [],
         },
         attributeFilters: {
-          excludeTechNews: isTechNews,
-          excludeAnnouncements: isAnnouncement,
-          excludeDigests: isDigest,
+          excludeTechNews: data.isTechNews,
+          excludeAnnouncements: data.isAnnouncement,
+          excludeDigests: data.isDigest,
         },
         similarMode: "duplicates",
-        limit: limit,
-        sortType: "sourceInfluence",
-        sortDirectionType: "desc",
-        intervalType: "month",
-        histogramTypes: ["totalDocuments", "riskFactors"],
-      })
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    }
-
-    function objectSearch() {
-        api
-      .post("/api/v1/objectsearch", {
-        issueDateInterval: {
-          startDate: startDate,
-          endDate: endDate,
-        },
-        searchContext: {
-          targetSearchEntitiesContext: {
-            targetSearchEntities: [
-              {
-                type: "company",
-                sparkId: null,
-                entityId: null,
-                inn: inn,
-                maxFullness: maxFullness,
-                inBusinessNews: inBusinessNews,
-              },
-            ],
-            onlyMainRole: onlyMainRole,
-            tonality: tonality,
-            onlyWithRiskFactors: onlyWithRiskFactors,
-            riskFactors: {
-              and: [],
-              or: [],
-              not: [],
-            },
-            themes: {
-              and: [],
-              or: [],
-              not: [],
-            },
-          },
-          themesFilter: {
-            and: [],
-            or: [],
-            not: [],
-          },
-        },
-        searchArea: {
-          includedSources: [],
-          excludedSources: [],
-          includedSourceGroups: [],
-          excludedSourceGroups: [],
-        },
-        attributeFilters: {
-          excludeTechNews: isTechNews,
-          excludeAnnouncements: isAnnouncement,
-          excludeDigests: isDigest,
-        },
-        similarMode: "duplicates",
-        limit: limit,
+        limit: data.limit,
         sortType: "sourceInfluence",
         sortDirectionType: "desc",
         intervalType: "month",
         histogramTypes: ["totalDocuments", "riskFactors"],
       })
       .then((response) => {
-        console.log(response);
+        setDataInfo(response.data.data.map(itemData => itemData.data)); // эта переменная собирает данные для слайдера
+        console.log(response.data.data.map(itemData => itemData.data));
       })
       .catch((error) => {
         console.log(error);
       });
     }
 
+    function objectSearch(data) {
+        api
+      .post("/api/v1/objectsearch", {
+        issueDateInterval: {
+          startDate: data.startDate,
+          endDate: data.endDate,
+        },
+        searchContext: {
+          targetSearchEntitiesContext: {
+            targetSearchEntities: [
+              {
+                type: "company",
+                sparkId: null,
+                entityId: null,
+                inn: data.inn,
+                maxFullness: data.maxFullness,
+                inBusinessNews: data.inBusinessNews,
+              },
+            ],
+            onlyMainRole: data.onlyMainRole,
+            tonality: data.tonality,
+            onlyWithRiskFactors: data.onlyWithRiskFactors,
+            riskFactors: {
+              and: [],
+              or: [],
+              not: [],
+            },
+            themes: {
+              and: [],
+              or: [],
+              not: [],
+            },
+          },
+          themesFilter: {
+            and: [],
+            or: [],
+            not: [],
+          },
+        },
+        searchArea: {
+          includedSources: [],
+          excludedSources: [],
+          includedSourceGroups: [],
+          excludedSourceGroups: [],
+        },
+        attributeFilters: {
+          excludeTechNews: data.isTechNews,
+          excludeAnnouncements: data.isAnnouncement,
+          excludeDigests: data.isDigest,
+        },
+        similarMode: "duplicates",
+        limit: data.limit,
+        sortType: "sourceInfluence",
+        sortDirectionType: "desc",
+        intervalType: "month",
+        histogramTypes: ["totalDocuments", "riskFactors"],
+      })
+      .then((response) => {
+        //console.log(response.data.items);
+        documents(response.data.items.map(id => id.encodedId));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    }
+
+    function documents(ids) {
+      api.post('/api/v1/documents', {
+        ids: ids
+      })
+      .then((response) => {
+        //console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+    }
     
     const [inn, setInn] = useState('');
     const [tonality, setTonality] = useState("any");

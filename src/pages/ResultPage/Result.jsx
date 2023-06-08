@@ -1,7 +1,10 @@
 import "./result.scss";
 import resultImage from "../../assets/images/result-image-hero.png";
+import ResultSlider from "../../components/ResultSlider/ResultSlider";
 
-const Result = () => {
+const Result = (props) => {
+    const {dataInfo, setDataInfo} = props;
+
     return(
         <>
             <div className="container">
@@ -15,10 +18,12 @@ const Result = () => {
                     </div>
                 </div>
                 <div className="result_main">
-                    <h1 className="title result_title">Список документов</h1>
-                    <div className="result_main_container">
-                        
+                    <div className="title list_title">Общая сводка</div>
+                    <span className="list_subtitle">Найдено 4 221 вариантов</span>
+                    <div className="result_data_slider">
+                        <ResultSlider dataInfo={dataInfo} setDataInfo={setDataInfo}/>
                     </div>
+                    <h1 className="title list_title">Список документов</h1>
                 </div>
             </div>
         </>
