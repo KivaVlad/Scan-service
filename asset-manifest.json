@@ -1,26 +1,27 @@
 {
   "files": {
-    "main.css": "/Scan-service/static/css/main.8eac9e35.css",
-    "main.js": "/Scan-service/static/js/main.f35646b8.js",
-    "static/media/user-icon.svg": "/Scan-service/static/media/user-icon.6f04e7dc6276c2cd1c131149506bee56.svg",
+    "main.css": "/Scan-service/static/css/main.391a4480.css",
+    "main.js": "/Scan-service/static/js/main.373de523.js",
     "static/media/Ferry-Black.eot": "/Scan-service/static/media/Ferry-Black.49a7388dcb2ce51cda59.eot",
     "static/media/Ferry-Black.ttf": "/Scan-service/static/media/Ferry-Black.5360f215b842ff11440a.ttf",
+    "static/media/card_img.jpg": "/Scan-service/static/media/card_img.8dc7e93b9a5477e4b1d7.jpg",
     "static/media/Characters.jpg": "/Scan-service/static/media/Characters.fc446e87b8be48e48b8a.jpg",
     "static/media/home.jpg": "/Scan-service/static/media/home.c9a09d7b914f27b65cf9.jpg",
     "static/media/home-bachground-user.jpg": "/Scan-service/static/media/home-bachground-user.f07f9466deb1c3a02c84.jpg",
     "static/media/result-image-hero.png": "/Scan-service/static/media/result-image-hero.17fa26e21cbfadb423de.png",
     "static/media/Ferry-Black.woff": "/Scan-service/static/media/Ferry-Black.fc929522c5bc436a4ca3.woff",
     "static/media/search_group.png": "/Scan-service/static/media/search_group.6c54a03e3ed7a8b4aaf4.png",
+    "static/media/user-icon.png": "/Scan-service/static/media/user-icon.fd86607fd1bfae219e99.png",
     "static/media/slick.svg": "/Scan-service/static/media/slick.2630a3e3eab21c607e21.svg",
     "static/media/slick.eot": "/Scan-service/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "/Scan-service/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/Scan-service/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/Scan-service/index.html",
-    "main.8eac9e35.css.map": "/Scan-service/static/css/main.8eac9e35.css.map",
-    "main.f35646b8.js.map": "/Scan-service/static/js/main.f35646b8.js.map"
+    "main.391a4480.css.map": "/Scan-service/static/css/main.391a4480.css.map",
+    "main.373de523.js.map": "/Scan-service/static/js/main.373de523.js.map"
   },
   "entrypoints": [
-    "static/css/main.8eac9e35.css",
-    "static/js/main.f35646b8.js"
+    "static/css/main.391a4480.css",
+    "static/js/main.373de523.js"
   ]
 }
