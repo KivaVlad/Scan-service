@@ -4,9 +4,7 @@ import api from "../../axios/axios";
 import "./searchForm.scss";
 import { useState } from "react";
 
-const SearchForm = (props) => {
-  const {setDataInfo} = props;
-
+const SearchForm = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const onSubmit = (data) => {
       histograms(data);
@@ -71,7 +69,6 @@ const SearchForm = (props) => {
         histogramTypes: ["totalDocuments", "riskFactors"],
       })
       .then((response) => {
-        setDataInfo(response.data.data.map(itemData => itemData.data)); // эта переменная собирает данные для слайдера
         console.log(response.data.data.map(itemData => itemData.data));
       })
       .catch((error) => {

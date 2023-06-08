@@ -4,7 +4,7 @@ import AccountInfo from "./account-info/AccountInfo";
 import "./header.scss";
 
 import logo from "../../assets/images/logo.png";
-import userLogo from "../../assets/images/user-icon.svg";
+import userLogo from "../../assets/images/user-icon.png";
 import footerLogo from "../../assets/images/footer_logo.png";
 
 const Header = (props) => {
@@ -29,7 +29,7 @@ const Header = (props) => {
                     </div>
                     <div className='header_nav_items'>
                       <NavLink to="/" onClick={ () => setActiveState(activeState = !activeState)} className='header_nav_items_link'>Главная</NavLink>
-                      <NavLink to="/search" onClick={ () => setActiveState(activeState = !activeState)} className='header_nav_items_link'>Тарифы</NavLink>
+                      <NavLink to="*" onClick={ () => setActiveState(activeState = !activeState)} className='header_nav_items_link'>Тарифы</NavLink>
                       <NavLink to="/result" onClick={ () => setActiveState(activeState = !activeState)} className='header_nav_items_link'>FAQ</NavLink>
                     </div>
                     {isLogged ? 
@@ -40,7 +40,7 @@ const Header = (props) => {
 
                       <div className="header_nav_user_active">
                         <div className="header_user_active_container">
-                          <div className="header_user_name">Алексей А. </div>
+                          <div className="header_user_name">Владислав К. </div>
                           <button 
                             onClick={handleLogOutBtn}
                             className="header_user_buttonLogOut"
@@ -70,7 +70,7 @@ const Header = (props) => {
                   </div>
                   <div className="header_user_active">
                     <div className="header_user_active_container">
-                      <div className="header_user_name">Алексей А. </div>
+                      <div className="header_user_name">Владислав К. </div>
                       <button 
                         onClick={handleLogOutBtn}
                         className="header_user_buttonLogOut"

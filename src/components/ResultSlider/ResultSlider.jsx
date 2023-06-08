@@ -1,28 +1,23 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import "./resultSlider.scss";
+import dataInfo from "../../json/dataInfo.json";
 import arrowLeft from "../carousel/items/arrow-left.png";
 import arrowRight from "../carousel/items/arrow-right.png";
 
-const ResultSlider = (props) => {
-    const {dataInfo, setDataInfo} = props;
-
-    useEffect(() => {
-        console.log(dataInfo);
-
-    }, [dataInfo]);
+const ResultSlider = () => {
 
     const slider = useRef(null);
     let position = 0;
 
     const prevHandler = () => {
-        position += 300
+        position += 150
         slider.current.childNodes.forEach((element) => {
             element.style = `transform: translateX(${position}px)`
         })
     }
 
     const nextHandler = () => {
-        position -= 300
+        position -= 150
         slider.current.childNodes.forEach((element) => {
             element.style = `transform: translateX(${position}px)`
         })
@@ -38,11 +33,15 @@ const ResultSlider = (props) => {
                     <span className="slider_container_info_text">Риски</span>
                 </div>
                 <div ref={slider} className="slider_wrapper">
-                    <div className="slider_res_content">
-                        <div className="slider_res_content_text">2023</div>
-                        <div className="slider_res_content_text">5</div>
-                        <div className="slider_res_content_text">0</div>
-                    </div>
+                    {dataInfo.map((data) => {
+                        return(
+                            <div className="slider_res_content" key={data.id}>
+                                <div className="slider_res_content_text">{data.period}</div>
+                                <div className="slider_res_content_text">{data.total}</div>
+                                <div className="slider_res_content_text">{data.risks}</div>
+                            </div>
+                        )
+                    })}
                 </div>
             </div>
             <button onClick={nextHandler} className="slider_section_button"><img src={arrowRight} alt="next"/></button>

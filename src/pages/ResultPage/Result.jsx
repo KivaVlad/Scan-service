@@ -1,9 +1,10 @@
+import documents from "../../json/documents.json";
 import "./result.scss";
 import resultImage from "../../assets/images/result-image-hero.png";
 import ResultSlider from "../../components/ResultSlider/ResultSlider";
+import ResultCards from "../../components/ResultCards/ResultCards";
 
-const Result = (props) => {
-    const {dataInfo, setDataInfo} = props;
+const Result = () => {
 
     return(
         <>
@@ -21,9 +22,19 @@ const Result = (props) => {
                     <div className="title list_title">Общая сводка</div>
                     <span className="list_subtitle">Найдено 4 221 вариантов</span>
                     <div className="result_data_slider">
-                        <ResultSlider dataInfo={dataInfo} setDataInfo={setDataInfo}/>
+                        <ResultSlider />
                     </div>
                     <h1 className="title list_title">Список документов</h1>
+                    <div className="documents_results_container">
+                        {documents.map((doc) => {
+                            return(
+                                <ResultCards key={doc.id} doc={doc}/>
+                            )
+                        })}
+                    </div>
+                    <div className="rusults_main_btn">
+                        <button className="results_button">Показать больше</button>
+                    </div>
                 </div>
             </div>
         </>
