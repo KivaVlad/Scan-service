@@ -1,5 +1,6 @@
 .result_header {
     display: flex;
+    align-items: center;
     justify-content: space-between;
     margin-top: 20px;
 }
@@ -144,7 +145,7 @@
     }
 
     .result_data_slider {
-        margin: 40px 0 80px 0;
+        margin: 40px 0 120px 0;
     }
 
     .documents_results_container {
@@ -159,6 +160,16 @@
         flex-direction: column;
         justify-content: center;
         margin-top: 20px;
+    }
+
+    .result_header_text {
+        margin-top: 0px;
+        width: 100%;
+    }
+
+    .result_title {
+        font-size: 32px;
+        line-height: 40px;
     }
 
     .result_hero_img {
@@ -178,11 +189,20 @@
         margin: 40px 10px;
     }
 
-    .result_header {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin-top: 20px;
+    .result_title {
+        font-size: 28px;
+        line-height: 36px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .result_title {
+        font-size: 26px;
+        line-height: 30px;
+    }
+
+    .results_button {
+        width: 100%;
+        margin: 0 10px;
     }
 }

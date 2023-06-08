@@ -97,6 +97,12 @@
     }
 
     .slider_container {
-        margin-left: 0;
+        margin-left: 10px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .slider_container {
+        margin-left: 6px;
     }
 }
