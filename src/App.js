@@ -1,3 +1,4 @@
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 
@@ -17,7 +18,7 @@ function App() {
     } else {
       setIsLogged(false);
     }
-  })
+  }, [setIsLogged]);
 
   return (
     <>

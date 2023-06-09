@@ -1,8 +1,9 @@
+import React from "react";
 import { useState } from "react";
 import { NavLink, Link, useNavigate } from "react-router-dom";
 import AccountInfo from "./account-info/AccountInfo";
-import "./header.scss";
 
+import "./header.scss";
 import logo from "../../assets/images/logo.png";
 import userLogo from "../../assets/images/user-icon.png";
 import footerLogo from "../../assets/images/footer_logo.png";
