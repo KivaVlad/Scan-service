@@ -69,7 +69,7 @@ const SearchForm = () => {
         histogramTypes: ["totalDocuments", "riskFactors"],
       })
       .then((response) => {
-        console.log(response.data.data.map(itemData => itemData.data));
+        console.log(response.data.data);
       })
       .catch((error) => {
         console.log(error);
@@ -134,7 +134,6 @@ const SearchForm = () => {
         histogramTypes: ["totalDocuments", "riskFactors"],
       })
       .then((response) => {
-        //console.log(response.data.items);
         documents(response.data.items.map(id => id.encodedId));
       })
       .catch((error) => {
@@ -147,7 +146,7 @@ const SearchForm = () => {
         ids: ids
       })
       .then((response) => {
-        //console.log(response.data);
+        console.log(response.data);
       })
       .catch((error) => {
         console.log(error);

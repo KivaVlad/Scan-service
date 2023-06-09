@@ -42,7 +42,10 @@ const Header = (props) => {
                         <div className="header_user_active_container">
                           <div className="header_user_name">Владислав К. </div>
                           <button 
-                            onClick={handleLogOutBtn}
+                            onClick={() => {
+                              handleLogOutBtn();
+                              setActiveState(activeState = !activeState);
+                            }}
                             className="header_user_buttonLogOut"
                           >
                             Выйти

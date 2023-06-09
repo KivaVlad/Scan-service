@@ -1,4 +1,4 @@
-import documents from "../../json/documents.json";
+import documentsCards from "../../json/documentsCards.json";
 import "./result.scss";
 import resultImage from "../../assets/images/result-image-hero.png";
 import ResultSlider from "../../components/ResultSlider/ResultSlider";
@@ -26,15 +26,20 @@ const Result = () => {
                     </div>
                     <h1 className="title list_title">Список документов</h1>
                     <div className="documents_results_container">
-                        {documents.map((doc) => {
+                        {documentsCards.map((doc) => {
                             return(
                                 <ResultCards key={doc.id} doc={doc}/>
                             )
                         })}
                     </div>
-                    <div className="rusults_main_btn">
-                        <button className="results_button">Показать больше</button>
-                    </div>
+                    {documentsCards.length > 10 
+                        ?
+                        <div className="rusults_main_btn">
+                            <button className="results_button">Показать больше</button>
+                        </div>
+                        :
+                        <></>
+                    }
                 </div>
             </div>
         </>
