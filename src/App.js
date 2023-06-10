@@ -20,14 +20,18 @@ function App() {
     }
   }, [setIsLogged]);
 
+  const [dataInfo, setDataInfo] = useState([]);
+
+  const [documents, setDocuments] = useState([]);
+
   return (
     <>
       <Routes>
         <Route path="/" element={<Layout isLogged={isLogged} setIsLogged={setIsLogged} />}>
           <Route index element={<HomePage isLogged={isLogged} />} />
           <Route path="/login" element={<LoginPage setIsLogged={setIsLogged} />} />
-          <Route path="/search" element={<SearchPage />}/>
-          <Route path="/result" element={<Result />}/>
+          <Route path="/search" element={<SearchPage setDataInfo={setDataInfo} setDocuments={setDocuments}/>}/>
+          <Route path="/result" element={<Result dataInfo={dataInfo} documents={documents}/>}/>
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

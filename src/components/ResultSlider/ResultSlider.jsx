@@ -6,7 +6,10 @@ import "./resultSlider.scss";
 import arrowLeft from "../carousel/items/arrow-left.png";
 import arrowRight from "../carousel/items/arrow-right.png";
 
-const ResultSlider = () => {
+const ResultSlider = (props) => {
+    const {dataInfo} = props;
+
+    const myData = JSON.parse(localStorage.getItem('histogram'));
 
     const slider = useRef(null);
     let position = 0;
@@ -25,104 +28,6 @@ const ResultSlider = () => {
         })
     }
 
-    const dataInfo = [
-        {
-            "id": "1",
-            "period": "01.09.2022",
-            "total": "5",
-            "risks": "0"
-        },
-        {
-            "id": "2",
-            "period": "13.09.2022",
-            "total": "2",
-            "risks": "0"
-        },
-        {
-            "id": "3",
-            "period": "15.09.2022",
-            "total": "6",
-            "risks": "0"
-        },
-        {
-            "id": "4",
-            "period": "23.09.2022",
-            "total": "8",
-            "risks": "2"
-        },
-        {
-            "id": "5",
-            "period": "02.10.2022",
-            "total": "1",
-            "risks": "0"
-        },
-        {
-            "id": "6",
-            "period": "15.10.2022",
-            "total": "10",
-            "risks": "2"
-        },
-        {
-            "id": "7",
-            "period": "19.10.2022",
-            "total": "4",
-            "risks": "0"
-        },
-        {
-            "id": "8",
-            "period": "22.10.2022",
-            "total": "3",
-            "risks": "0"
-        },
-        {
-            "id": "9",
-            "period": "27.09.2022",
-            "total": "5",
-            "risks": "0"
-        },
-        {
-            "id": "10",
-            "period": "03.11.2022",
-            "total": "2",
-            "risks": "0"
-        },
-        {
-            "id": "11",
-            "period": "09.11.2022",
-            "total": "6",
-            "risks": "0"
-        },
-        {
-            "id": "12",
-            "period": "13.11.2022",
-            "total": "8",
-            "risks": "2"
-        },
-        {
-            "id": "13",
-            "period": "15.11.2022",
-            "total": "1",
-            "risks": "0"
-        },
-        {
-            "id": "14",
-            "period": "20.11.2022",
-            "total": "10",
-            "risks": "2"
-        },
-        {
-            "id": "15",
-            "period": "26.11.2022",
-            "total": "4",
-            "risks": "0"
-        },
-        {
-            "id": "16",
-            "period": "27.11.2022",
-            "total": "3",
-            "risks": "0"
-        }
-    ]
 
     if (dataInfo.length > 0) {
     return(
@@ -135,12 +40,12 @@ const ResultSlider = () => {
                         <span className="slider_container_info_text">Риски</span>
                     </div>
                     <div ref={slider} className="slider_wrapper">
-                        {dataInfo.map((data) => {
+                        {dataInfo.map((element, id) => {
                             return(
-                                <div className="slider_res_content" key={data.id}>
-                                    <div className="slider_res_content_text">{data.period}</div>
-                                    <div className="slider_res_content_text">{data.total}</div>
-                                    <div className="slider_res_content_text">{data.risks}</div>
+                                <div className="slider_res_content" key={id}>
+                                    <div className="slider_res_content_text">{element.data[0].date.substr(0,10)}</div>
+                                    <div className="slider_res_content_text">{element.data[0].value}</div>
+                                    <div className="slider_res_content_text">{element.data[1].value}</div>
                                 </div>
                             )
                         })}

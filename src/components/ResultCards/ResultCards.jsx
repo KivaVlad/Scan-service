@@ -8,18 +8,18 @@ const ResultCards = (props) => {
     return(
             <div className="documents_card">
                 <div className="documents_card_header">
-                    <div className="documents_card_date">{doc.date}</div>
-                    <Link target='_blank' to={doc.sourseLink} className="documents_card_sourse">{doc.source}</Link>
+                    <div className="documents_card_date">{doc.ok.issueDate.substr(0,10)}</div>
+                    <div className="documents_card_sourse">{doc.ok.source.name}</div>
                 </div>
-                <div className="documents_card_title">{doc.title}</div>
-                <div className="documents_card_tag">{doc.tag}</div>
+                <div className="documents_card_title">{doc.ok.title.text.substr(0, 70)} ...</div>
+                <div className="documents_card_tag">Технические новости</div>
                 <div className="documents_card_image">
-                    <img src={doc.img} alt="img"/>
+                    <img src={doc.ok.img} alt="img"/>
                 </div>
-                <div className="documents_card_text">{doc.text}</div>
+                <div className="documents_card_text">{doc.ok.content.markup.substr(0, 500)} ...</div>
                 <div className="documents_card_footer">
-                    <Link target='_blank' to={doc.link} className="documents_card_button">Читать в источнике</Link>
-                    <span className="documents_card_words">{doc.words}слов</span>
+                    <Link target='_blank' to={doc.ok.url} className="documents_card_button">Читать в источнике</Link>
+                    <span className="documents_card_words">{doc.ok.attributes.wordCount} слов</span>
                 </div>
             </div>
     )

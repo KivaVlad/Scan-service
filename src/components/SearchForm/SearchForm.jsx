@@ -5,16 +5,16 @@ import api from "../../axios/axios";
 import "./searchForm.scss";
 import { useState } from "react";
 
-const SearchForm = () => {
+const SearchForm = ({ setDataInfo, setDocuments }) => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const onSubmit = (data) => {
       histograms(data);
       objectSearch(data);
+      toResultPage();
     }
     
-    function histograms(data) {
-        api
-      .post("/api/v1/objectsearch/histograms", {
+    async function histograms(data) {
+      await api.post("/api/v1/objectsearch/histograms", {
         issueDateInterval: {
           startDate: data.startDate,
           endDate: data.endDate,
@@ -69,17 +69,18 @@ const SearchForm = () => {
         intervalType: "month",
         histogramTypes: ["totalDocuments", "riskFactors"],
       })
-      .then((response) => {
-        console.log(response.data.data);
+      .then((res) => {
+        console.log(res.data.data);
+        setDataInfo(res.data.data);
+        localStorage.setItem('histogram', JSON.stringify(res.data.data));
       })
       .catch((error) => {
         console.log(error);
       });
     }
 
-    function objectSearch(data) {
-        api
-      .post("/api/v1/objectsearch", {
+    async function objectSearch(data) {
+      await  api.post("/api/v1/objectsearch", {
         issueDateInterval: {
           startDate: data.startDate,
           endDate: data.endDate,
@@ -142,12 +143,13 @@ const SearchForm = () => {
       });
     }
 
-    function documents(ids) {
-      api.post('/api/v1/documents', {
+    async function documents(ids) {
+      await api.post('/api/v1/documents', {
         ids: ids
       })
       .then((response) => {
         console.log(response.data);
+        setDocuments(response.data);
       })
       .catch((error) => {
         console.log(error);

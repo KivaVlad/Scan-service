@@ -27,6 +27,7 @@ const LoginForm = (props) => {
             toHomePage();
         })
         .catch((error) => {
+            console.log(error);
             alert('Введите корректные данные');
         })
     }
