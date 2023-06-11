@@ -17,7 +17,7 @@ const ResultSlider = (props) => {
         } else {
           setTotalDocs();
         }
-    },[setTotalDocs]);
+    },[]);
 
     useEffect(() => {
         if(myRiskFactors !== null) {
@@ -25,7 +25,7 @@ const ResultSlider = (props) => {
         } else {
           setRiskFactors();
         }
-    },[setRiskFactors]);
+    },[]);
         
     const slider = useRef(null);
     let position = 0;
@@ -45,7 +45,7 @@ const ResultSlider = (props) => {
     }
 
 
-    if (totalDocs.length > 0) {
+    if (myTotalDocs !== null) {
     return(
             <div className="slider_section">
                 <button onClick={prevHandler} className="slider_section_button"><img src={arrowLeft}/></button>

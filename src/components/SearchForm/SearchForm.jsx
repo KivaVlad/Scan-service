@@ -1,18 +1,19 @@
 import React from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import api from "../../axios/axios";
 import "./searchForm.scss";
-import { useState, useEffect } from "react";
 
 
 const SearchForm = (props) => {
     const {setTotalDocs, setRiskFactors, setDocuments} = props;
 
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    const { register, formState: { errors }, reset, handleSubmit } = useForm();
     const onSubmit = (data) => {
       histograms(data);
       objectSearch(data);
+      reset();
       toResultPage();
     }
     
