@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useRef } from "react";
 import { Loader } from "../loader/Loader";
 
@@ -7,9 +7,25 @@ import arrowLeft from "../carousel/items/arrow-left.png";
 import arrowRight from "../carousel/items/arrow-right.png";
 
 const ResultSlider = (props) => {
-    const {totalDocs, riskFactors} = props;
+    const {totalDocs, riskFactors, setTotalDocs, setRiskFactors} = props;
+    const myTotalDocs = JSON.parse(localStorage.getItem('totalDocs'));
+    const myRiskFactors = JSON.parse(localStorage.getItem('riskFactors'));
 
-    // const myData = JSON.parse(localStorage.getItem('histogram'));
+    useEffect(() => {
+        if(myTotalDocs !== null) {
+            setTotalDocs(myTotalDocs);
+        } else {
+          setTotalDocs();
+        }
+    },[setTotalDocs]);
+
+    useEffect(() => {
+        if(myRiskFactors !== null) {
+            setRiskFactors(myRiskFactors);
+        } else {
+          setRiskFactors();
+        }
+    },[setRiskFactors]);
         
     const slider = useRef(null);
     let position = 0;
@@ -45,7 +61,7 @@ const ResultSlider = (props) => {
                                 <div className="slider_res_content" key={id}>
                                     <div className="slider_res_content_text">{element.date.substr(0, 10)}</div>
                                     <div className="slider_res_content_text">{element.value}</div>
-                                    <div className="slider_res_content_text">{riskFactors.map(el => el.value)}</div>
+                                    <div className="slider_res_content_text">{riskFactors[id].value}</div>
                                 </div>
                             )
                         })}

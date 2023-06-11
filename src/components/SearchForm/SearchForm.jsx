@@ -3,9 +3,12 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import api from "../../axios/axios";
 import "./searchForm.scss";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-const SearchForm = ({ setTotalDocs, setRiskFactors, setDocuments }) => {
+
+const SearchForm = (props) => {
+    const {setTotalDocs, setRiskFactors, setDocuments} = props;
+
     const { register, formState: { errors }, handleSubmit } = useForm();
     const onSubmit = (data) => {
       histograms(data);
@@ -70,15 +73,16 @@ const SearchForm = ({ setTotalDocs, setRiskFactors, setDocuments }) => {
         histogramTypes: ["totalDocuments", "riskFactors"],
       })
       .then((res) => {
-        console.log(res.data.data.map(el => el.data));
-        //setTotalDocs(res.data.data.map(el => el.data));
-        //console.log(res.data.data);
-        //setRiskFactors(res.data.data[1].map(el => el.data));
+        setTotalDocs(res.data.data[0].data);
+        setRiskFactors(res.data.data[1].data);
+        localStorage.setItem('totalDocs', JSON.stringify(res.data.data[0].data));
+        localStorage.setItem('riskFactors', JSON.stringify(res.data.data[1].data));
       })
       .catch((error) => {
         console.log(error);
       });
     }
+
 
     async function objectSearch(data) {
       await  api.post("/api/v1/objectsearch", {
@@ -144,18 +148,20 @@ const SearchForm = ({ setTotalDocs, setRiskFactors, setDocuments }) => {
       });
     }
 
+
     async function documents(ids) {
       await api.post('/api/v1/documents', {
         ids: ids
       })
       .then((response) => {
-        console.log(response.data);
         setDocuments(response.data);
+        localStorage.setItem('documents', JSON.stringify(response.data));
       })
       .catch((error) => {
         console.log(error);
       })
     }
+
     
     const [inn, setInn] = useState('');
     const [tonality, setTonality] = useState("any");
@@ -178,7 +184,7 @@ const SearchForm = ({ setTotalDocs, setRiskFactors, setDocuments }) => {
 
     const navigate = useNavigate();
     function toResultPage() {
-        navigate("/result");
+      navigate("/result");
     }
 
     return(

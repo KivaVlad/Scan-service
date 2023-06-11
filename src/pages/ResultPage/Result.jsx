@@ -1,4 +1,5 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import "./result.scss";
 import resultImage from "../../assets/images/result-image-hero.png";
 import ResultSlider from "../../components/ResultSlider/ResultSlider";
@@ -7,7 +8,16 @@ import { useNavigate } from "react-router-dom";
 
 
 const Result = (props) => {
-    const {totalDocs,riskFactors, documents} = props;
+    const {totalDocs, riskFactors, documents, setTotalDocs, setRiskFactors, setDocuments} = props;
+
+    const docsInStorage = JSON.parse(localStorage.getItem('documents'));
+    useEffect(() => {
+        if(docsInStorage !== null) {
+            setDocuments(docsInStorage);
+        } else {
+          setDocuments();
+        }
+    },[setDocuments]);
     
     const navigate = useNavigate();
     function toSearchPage() {
@@ -30,11 +40,11 @@ const Result = (props) => {
                     <div className="title list_title">Общая сводка</div>
                     <span className="list_subtitle">Найдено {documents.length} вариантов</span>
                     <div className="result_data_slider">
-                        <ResultSlider totalDocs={totalDocs} riskFactors={riskFactors}/>
+                        <ResultSlider totalDocs={totalDocs} riskFactors={riskFactors} setTotalDocs={setTotalDocs} setRiskFactors={setRiskFactors} />
                     </div>
                     <h1 className="title list_title">Список документов</h1>
 
-                    {documents.length > 0 
+                    {documents.length > 0
                       ?
                         <>
                         <div className="documents_results_container">

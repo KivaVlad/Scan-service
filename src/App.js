@@ -10,6 +10,9 @@ import SearchPage from "./pages/SearchPage/SearchPage";
 import Result from "./pages/ResultPage/Result";
 
 function App() {
+  const [totalDocs, setTotalDocs] = useState([]);
+  const [riskFactors, setRiskFactors] = useState([]);
+  const [documents, setDocuments] = useState([]);
   const [isLogged, setIsLogged] = useState(false);
 
   useEffect(() => {
@@ -20,18 +23,14 @@ function App() {
     }
   }, [setIsLogged]);
 
-  const [totalDocs, setTotalDocs] = useState([]);
-  const [riskFactors, setRiskFactors] = useState([]);
-  const [documents, setDocuments] = useState([]);
-
   return (
     <>
       <Routes>
         <Route path="/" element={<Layout isLogged={isLogged} setIsLogged={setIsLogged} />}>
           <Route index element={<HomePage isLogged={isLogged} />} />
           <Route path="/login" element={<LoginPage setIsLogged={setIsLogged} />} />
-          <Route path="/search" element={<SearchPage setTotalDocs={setTotalDocs} setRiskFactors={setRiskFactors} setDocuments={setDocuments}/>}/>
-          <Route path="/result" element={<Result totalDocs={totalDocs} riskFactors={riskFactors} documents={documents}/>}/>
+          <Route path="/search" element={<SearchPage setTotalDocs={setTotalDocs} setRiskFactors={setRiskFactors} setDocuments={setDocuments} />}/>
+          <Route path="/result" element={<Result totalDocs={totalDocs} riskFactors={riskFactors} documents={documents} setTotalDocs={setTotalDocs} setRiskFactors={setRiskFactors} setDocuments={setDocuments} />}/>
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

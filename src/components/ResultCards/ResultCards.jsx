@@ -9,7 +9,7 @@ const ResultCards = (props) => {
             <div className="documents_card">
                 <div className="documents_card_header">
                     <div className="documents_card_date">{doc.ok.issueDate.substr(0,10)}</div>
-                    <div className="documents_card_sourse">{doc.ok.source.name}</div>
+                    <div className="documents_card_sourse">{doc.ok.source.name.substr(0, 30)} ...</div>
                 </div>
                 <div className="documents_card_title">{doc.ok.title.text.substr(0, 70)} ...</div>
                 <div className="documents_card_tag">Технические новости</div>
