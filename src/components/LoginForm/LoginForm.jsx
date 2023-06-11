@@ -28,7 +28,7 @@ const LoginForm = (props) => {
         })
         .catch((error) => {
             console.log(error);
-            alert('Введите корректные данные');
+            alert('Неверный логин или пароль');
         })
     }
 

@@ -7,10 +7,10 @@ import arrowLeft from "../carousel/items/arrow-left.png";
 import arrowRight from "../carousel/items/arrow-right.png";
 
 const ResultSlider = (props) => {
-    const {dataInfo} = props;
+    const {totalDocs, riskFactors} = props;
 
-    const myData = JSON.parse(localStorage.getItem('histogram'));
-
+    // const myData = JSON.parse(localStorage.getItem('histogram'));
+        
     const slider = useRef(null);
     let position = 0;
 
@@ -29,7 +29,7 @@ const ResultSlider = (props) => {
     }
 
 
-    if (dataInfo.length > 0) {
+    if (totalDocs.length > 0) {
     return(
             <div className="slider_section">
                 <button onClick={prevHandler} className="slider_section_button"><img src={arrowLeft}/></button>
@@ -40,12 +40,12 @@ const ResultSlider = (props) => {
                         <span className="slider_container_info_text">Риски</span>
                     </div>
                     <div ref={slider} className="slider_wrapper">
-                        {dataInfo.map((element, id) => {
+                        {totalDocs.map((element, id) => {
                             return(
                                 <div className="slider_res_content" key={id}>
-                                    <div className="slider_res_content_text">{element.data[0].date.substr(0,10)}</div>
-                                    <div className="slider_res_content_text">{element.data[0].value}</div>
-                                    <div className="slider_res_content_text">{element.data[1].value}</div>
+                                    <div className="slider_res_content_text">{element.date.substr(0, 10)}</div>
+                                    <div className="slider_res_content_text">{element.value}</div>
+                                    <div className="slider_res_content_text">{riskFactors.map(el => el.value)}</div>
                                 </div>
                             )
                         })}
@@ -57,7 +57,7 @@ const ResultSlider = (props) => {
     } else {
         return (
             <div className="slider_section">
-            <button onClick={prevHandler} className="slider_section_button"><img src={arrowLeft}/></button>
+            <button className="slider_section_button"><img src={arrowLeft}/></button>
             <div className="slider_container">
                 <div className="slider_container_info">
                     <span className="slider_container_info_text">Период</span>
@@ -68,7 +68,7 @@ const ResultSlider = (props) => {
                     <Loader /> <h2 className="slider_loader_text">Загружаем данные...</h2>
                 </div>
             </div>
-            <button onClick={nextHandler} className="slider_section_button"><img src={arrowRight}/></button>
+            <button className="slider_section_button"><img src={arrowRight}/></button>
         </div>
         )
     }

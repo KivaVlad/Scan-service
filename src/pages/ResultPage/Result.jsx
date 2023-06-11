@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 
 const Result = (props) => {
-    const {dataInfo, documents} = props;
+    const {totalDocs,riskFactors, documents} = props;
     
     const navigate = useNavigate();
     function toSearchPage() {
@@ -30,7 +30,7 @@ const Result = (props) => {
                     <div className="title list_title">Общая сводка</div>
                     <span className="list_subtitle">Найдено {documents.length} вариантов</span>
                     <div className="result_data_slider">
-                        <ResultSlider dataInfo={dataInfo}/>
+                        <ResultSlider totalDocs={totalDocs} riskFactors={riskFactors}/>
                     </div>
                     <h1 className="title list_title">Список документов</h1>
 

@@ -31,7 +31,7 @@ const Header = (props) => {
                     <div className='header_nav_items'>
                       <NavLink to="/" onClick={ () => setActiveState(activeState = !activeState)} className='header_nav_items_link'>Главная</NavLink>
                       <NavLink to="*" onClick={ () => setActiveState(activeState = !activeState)} className='header_nav_items_link'>Тарифы</NavLink>
-                      <NavLink to="/result" onClick={ () => setActiveState(activeState = !activeState)} className='header_nav_items_link'>FAQ</NavLink>
+                      <NavLink to="*" onClick={ () => setActiveState(activeState = !activeState)} className='header_nav_items_link'>FAQ</NavLink>
                     </div>
                     {isLogged ? 
                     <div className="header_nav_account_info">

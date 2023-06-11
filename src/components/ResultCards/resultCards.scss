@@ -65,6 +65,7 @@
     color: #000000;
     opacity: 0.5;
     margin: 20px 0 30px 0;
+    height: 150px;
 }
 
 .documents_card_footer {
@@ -90,6 +91,12 @@
 .documents_card_words {
     font-size: 14px;
     color: #949494;
+}
+
+@media screen and (max-width: 1200px) {
+    .documents_card_text {
+        height: 170px;
+    }
 }
 
 @media screen and (max-width: 1100px) {
@@ -159,6 +166,10 @@
         width: 100px;
         margin: 10px 0;
     }
+
+    .documents_card_text {
+        height: 200px;
+    }
 }
 
 @media screen and (max-width: 800px) {
@@ -179,6 +190,7 @@
     .documents_card_text {
         font-size: 10px;
         line-height: 12px;
+        height: 130px;
     }
 }
 

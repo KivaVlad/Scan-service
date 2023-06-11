@@ -5,7 +5,7 @@ import api from "../../axios/axios";
 import "./searchForm.scss";
 import { useState } from "react";
 
-const SearchForm = ({ setDataInfo, setDocuments }) => {
+const SearchForm = ({ setTotalDocs, setRiskFactors, setDocuments }) => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const onSubmit = (data) => {
       histograms(data);
@@ -70,9 +70,10 @@ const SearchForm = ({ setDataInfo, setDocuments }) => {
         histogramTypes: ["totalDocuments", "riskFactors"],
       })
       .then((res) => {
-        console.log(res.data.data);
-        setDataInfo(res.data.data);
-        localStorage.setItem('histogram', JSON.stringify(res.data.data));
+        console.log(res.data.data.map(el => el.data));
+        //setTotalDocs(res.data.data.map(el => el.data));
+        //console.log(res.data.data);
+        //setRiskFactors(res.data.data[1].map(el => el.data));
       })
       .catch((error) => {
         console.log(error);

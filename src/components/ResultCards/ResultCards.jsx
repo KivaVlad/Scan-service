@@ -16,10 +16,10 @@ const ResultCards = (props) => {
                 <div className="documents_card_image">
                     <img src={doc.ok.img} alt="img"/>
                 </div>
-                <div className="documents_card_text">{doc.ok.content.markup.substr(0, 500)} ...</div>
+                <div className="documents_card_text">{doc.ok.content.markup.substr(0, 600)} ...</div>
                 <div className="documents_card_footer">
                     <Link target='_blank' to={doc.ok.url} className="documents_card_button">Читать в источнике</Link>
-                    <span className="documents_card_words">{doc.ok.attributes.wordCount} слов</span>
+                    <span className="documents_card_words">{doc.ok.attributes.wordCount} слов(а)</span>
                 </div>
             </div>
     )

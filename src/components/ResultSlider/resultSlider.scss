@@ -93,7 +93,6 @@
     }
 
     .slider_res_content_text {
-        font-weight: 400;
         font-size: 14px;
     }
 
@@ -128,6 +127,10 @@
 
 @media screen and (max-width: 550px) {
     .slider_loader_text {
+        font-size: 12px;
+    }
+
+    .slider_res_content_text {
         font-size: 12px;
     }
 }
