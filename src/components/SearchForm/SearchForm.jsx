@@ -3,14 +3,17 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import api from "../../axios/axios";
+import ButtonLoader from "../ButtonLoader/ButtonLoader";
 import "./searchForm.scss";
 
 
 const SearchForm = (props) => {
     const {setTotalDocs, setRiskFactors, setDocuments} = props;
+    const [isLoading, setIsLoading] = useState(false);
 
     const { register, formState: { errors }, reset, handleSubmit } = useForm();
     const onSubmit = (data) => {
+      setIsLoading(true);
       histograms(data);
       objectSearch(data);
       reset();
@@ -82,6 +85,7 @@ const SearchForm = (props) => {
       .catch((error) => {
         console.log(error);
         alert('Что-то пошло не так. Попробуйте еще раз');
+        setIsLoading(false);
       });
     }
 
@@ -195,7 +199,7 @@ const SearchForm = (props) => {
                 <div className="search_wrapper_top">
                     <div className="search_wrapper_inputs">
 
-                        <h3 className='search_form_text'>ИНН компании* 9702009530</h3>
+                        <h3 className='search_form_text'>ИНН компании* 9701078611</h3>
                         <input className="search_form_input"
                             {...register("inn",{ required: true, minLength: 10, maxLength: 10, value: inn })} 
                             aria-invalid={errors.inn ? "true" : "false"} 
@@ -267,7 +271,7 @@ const SearchForm = (props) => {
                         </div>
                     </div>
 
-                    <button className="search_form_data_button" type="submit">Поиск</button>
+                    <button className="search_form_data_button" type="submit">{isLoading ? (<ButtonLoader />) : "Поиск"}</button>
                 </div>
             </form>
         </>

@@ -71,6 +71,8 @@
 }
 
 .search_form_data_button {
+    width: 220px;
+    height: 60px;
     font-family: 'Inter';
     font-weight: 500;
     font-size: 22px;
@@ -80,7 +82,6 @@
     border-radius: 5px;
     border: none;
     cursor: pointer;
-    padding: 14px 80px;
     margin-left: 150px;
     transition: .2s ease;
 
@@ -113,12 +114,21 @@
     .search_form_data_button {
         font-size: 18px;
         margin-left: 50px;
+        width: 200px;
+        height: 50px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .search_wrapper {
+        height: 360px;
     }
 }
 
 @media (max-width: 650px) {
     .search_wrapper {
         width: 400px;
+        height: 400px;
     }
 
     .search_wrapper_checkboxs {
@@ -132,7 +142,8 @@
 
     .search_form_data_button {
         font-size: 18px;
-        padding: 14px 80px;
+        width: 200px;
+        height: 50px;
         margin-left: 0px;
         margin-top: 20px;
     }
@@ -145,7 +156,7 @@
 
     .search_form_data_button {
         font-size: 16px;
-        padding: 10px 0px;
+        width: 100%;
     }
 }
 

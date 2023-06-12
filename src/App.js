@@ -9,6 +9,7 @@ import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import SearchPage from "./pages/SearchPage/SearchPage";
 import Result from "./pages/ResultPage/Result";
 
+
 function App() {
   const [totalDocs, setTotalDocs] = useState([]);
   const [riskFactors, setRiskFactors] = useState([]);

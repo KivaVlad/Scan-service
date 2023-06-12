@@ -1,7 +1,9 @@
 import React from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import api from "../../axios/axios";
+import ButtonLoader from "../ButtonLoader/ButtonLoader";
 
 import goodleImg from './images/google.png';
 import facebookImg from './images/fb.png';
@@ -9,17 +11,16 @@ import yandexImg from './images/yandex.png';
 import './loginform.scss';
 
 const LoginForm = (props) => {
-    const {setIsLogged} = props
+    const {setIsLogged} = props;
+    const [isLoading, setIsLoading] = useState(false);
 
-    const navigate = useNavigate();
-    function toHomePage() {
-        navigate('/');
-    }
+    
     
     const { register, formState: { errors }, reset, handleSubmit } = useForm();
     function onSubmit(data) {
         return api.post('/api/v1/account/login', data)
         .then((response) => {
+            setIsLoading(true);
             localStorage.setItem("token", response.data.accessToken);
             localStorage.setItem("expire", response.data.expire);
             setIsLogged(true);
@@ -30,6 +31,11 @@ const LoginForm = (props) => {
             console.log(error);
             alert('Неверный логин или пароль');
         })
+    }
+
+    const navigate = useNavigate();
+    function toHomePage() {
+        navigate('/');
     }
 
     const errorFormStyle = {
@@ -66,7 +72,7 @@ const LoginForm = (props) => {
                 {errors.password?.type === 'required' && <div style={errorFormStyle} role="alert">Неправильный пароль</div>}
             </div>
 
-            <button type='submit' className='form_button'>Войти</button>
+            <button type='submit' className='form_button'>{isLoading ? (<ButtonLoader />) : 'Войти'}</button>
             <Link to='*' className='form_restore_pass'>Восстановить пароль</Link>
         </div>
         <div className='form_links'>
