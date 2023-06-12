@@ -14,7 +14,6 @@ const SearchForm = (props) => {
       histograms(data);
       objectSearch(data);
       reset();
-      toResultPage();
     }
     
     async function histograms(data) {
@@ -78,9 +77,11 @@ const SearchForm = (props) => {
         setRiskFactors(res.data.data[1].data);
         localStorage.setItem('totalDocs', JSON.stringify(res.data.data[0].data));
         localStorage.setItem('riskFactors', JSON.stringify(res.data.data[1].data));
+        toResultPage();
       })
       .catch((error) => {
         console.log(error);
+        alert('Что-то пошло не так. Попробуйте еще раз');
       });
     }
 
@@ -194,7 +195,7 @@ const SearchForm = (props) => {
                 <div className="search_wrapper_top">
                     <div className="search_wrapper_inputs">
 
-                        <h3 className='search_form_text'>ИНН компании* 7710137066</h3>
+                        <h3 className='search_form_text'>ИНН компании* 9702009530</h3>
                         <input className="search_form_input"
                             {...register("inn",{ required: true, minLength: 10, maxLength: 10, value: inn })} 
                             aria-invalid={errors.inn ? "true" : "false"} 

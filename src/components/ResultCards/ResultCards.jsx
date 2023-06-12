@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./resultCards.scss";
 import { getContent } from "./helper";
+import "./resultCards.scss";
 
 const ResultCards = ({ doc }) => {
     const {content: { markup }} = doc;
@@ -25,7 +25,7 @@ const ResultCards = ({ doc }) => {
                 :
                     <div className="documents_card_image"></div>
                 }
-                
+
                 <div className="documents_card_text" dangerouslySetInnerHTML={{ __html: content }} />
                 <div className="documents_card_footer">
                     <Link target='_blank' to={doc.url} className="documents_card_button">Читать в источнике</Link>
