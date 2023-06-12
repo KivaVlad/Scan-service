@@ -29,6 +29,7 @@
 }
 
 .documents_card_title {
+    height: 54px;
     font-weight: 500;
     font-size: 22px;
     line-height: 24px;
@@ -66,7 +67,7 @@
     color: #000000;
     opacity: 0.5;
     margin: 20px 0 30px 0;
-    height: 150px;
+    height: 170px;
 }
 
 .documents_card_footer {
@@ -114,6 +115,10 @@
         font-size: 22px;
         line-height: 26px;
     }
+
+    .documents_card_text {
+        height: 210px;
+    }
 }
 
 @media screen and (max-width: 1000px) {
@@ -124,6 +129,7 @@
     }
 
     .documents_card_text {
+        height: 170px;
         font-size: 12px;
         line-height: 14px;
     }
@@ -191,7 +197,23 @@
     .documents_card_text {
         font-size: 10px;
         line-height: 12px;
-        height: 130px;
+        height: 140px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .documents_card_text {
+        font-size: 12px;
+        line-height: 12px;
+        height: 120px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .documents_card_text {
+        font-size: 10px;
+        line-height: 12px;
+        height: 160px;
     }
 }
 

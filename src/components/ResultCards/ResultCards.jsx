@@ -1,25 +1,35 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./resultCards.scss";
+import { getContent } from "./helper";
 
-const ResultCards = (props) => {
-    const {doc} = props;
+const ResultCards = ({ doc }) => {
+    const {content: { markup }} = doc;
+    const { bgUrl, content } = getContent(markup);
 
     return(
             <div className="documents_card">
                 <div className="documents_card_header">
-                    <div className="documents_card_date">{doc.ok.issueDate.substr(0,10)}</div>
-                    <div className="documents_card_sourse">{doc.ok.source.name.substr(0, 30)} ...</div>
+                    <div className="documents_card_date">{doc.issueDate.substr(0,10)}</div>
+                    <div className="documents_card_sourse">{doc.source.name.substr(0, 30)} ...</div>
                 </div>
-                <div className="documents_card_title">{doc.ok.title.text.substr(0, 70)} ...</div>
+                <div className="documents_card_title">{doc.title.text.substr(0, 70)} ...</div>
                 <div className="documents_card_tag">Технические новости</div>
-                <div className="documents_card_image">
-                    <img src={doc.ok.img} alt="img"/>
-                </div>
-                <div className="documents_card_text">{doc.ok.content.markup.substr(0, 600)} ...</div>
+
+                {Boolean(bgUrl) ? (
+                    <div 
+                        className="documents_card_image"
+                        style={{ backgroundImage: `url(${bgUrl})` }}
+                    ></div>
+                )
+                :
+                    <div className="documents_card_image"></div>
+                }
+                
+                <div className="documents_card_text" dangerouslySetInnerHTML={{ __html: content }} />
                 <div className="documents_card_footer">
-                    <Link target='_blank' to={doc.ok.url} className="documents_card_button">Читать в источнике</Link>
-                    <span className="documents_card_words">{doc.ok.attributes.wordCount} слов(а)</span>
+                    <Link target='_blank' to={doc.url} className="documents_card_button">Читать в источнике</Link>
+                    <span className="documents_card_words">{doc.attributes.wordCount} слов(а)</span>
                 </div>
             </div>
     )

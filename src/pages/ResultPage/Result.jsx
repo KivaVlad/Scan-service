@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import "./result.scss";
 import resultImage from "../../assets/images/result-image-hero.png";
 import ResultSlider from "../../components/ResultSlider/ResultSlider";
@@ -51,7 +51,7 @@ const Result = (props) => {
                         <div className="documents_results_container">
                             {documents.map((doc) => {
                                 return(
-                                    <ResultCards key={doc.ok.id} doc={doc}/>
+                                    <ResultCards key={doc.ok.id} doc={doc.ok}/>
                                 )
                             })}
                         </div>
