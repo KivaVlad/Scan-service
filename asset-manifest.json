@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Scan-service/static/css/main.edbff1fd.css",
-    "main.js": "/Scan-service/static/js/main.9cd4d01b.js",
+    "main.js": "/Scan-service/static/js/main.7800712f.js",
     "static/media/Ferry-Black.eot": "/Scan-service/static/media/Ferry-Black.49a7388dcb2ce51cda59.eot",
     "static/media/Ferry-Black.ttf": "/Scan-service/static/media/Ferry-Black.5360f215b842ff11440a.ttf",
     "static/media/card_img.jpg": "/Scan-service/static/media/card_img.8dc7e93b9a5477e4b1d7.jpg",
@@ -18,10 +18,10 @@
     "static/media/slick.woff": "/Scan-service/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/Scan-service/index.html",
     "main.edbff1fd.css.map": "/Scan-service/static/css/main.edbff1fd.css.map",
-    "main.9cd4d01b.js.map": "/Scan-service/static/js/main.9cd4d01b.js.map"
+    "main.7800712f.js.map": "/Scan-service/static/js/main.7800712f.js.map"
   },
   "entrypoints": [
     "static/css/main.edbff1fd.css",
-    "static/js/main.9cd4d01b.js"
+    "static/js/main.7800712f.js"
   ]
 }
