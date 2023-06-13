@@ -13,15 +13,11 @@ const Pagination = (props) => {
 
     const handleScroll = () => {
         if(!isScrolling) {
-            setTimeout(() => {
-                window.scrollTo(0, 0);
-                setIsScrolling(true);
-            }, 1000)
+            window.scrollTo(0, 0);
+            setIsScrolling(true);
         } else {
-            setTimeout(() => {
-                window.scrollTo(0, 0);
-                setIsScrolling(false);
-            }, 1000)
+            window.scrollTo(0, 0);
+            setIsScrolling(false);
         }
     }
 
@@ -29,13 +25,13 @@ const Pagination = (props) => {
         <div className="pagination">
             {
                 pageNumbers.map((number) => (
-                    <div className="page_item" key={number}>
+                    <div className="pagination_item" key={number}>
                         <button 
                             onClick={() => {
                                 handleScroll();
                                 paginate(number);
                             }} 
-                            className="page_btn"
+                            className="pagination_btn"
                         >
                             {number}
                         </button>

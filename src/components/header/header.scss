@@ -201,17 +201,23 @@
         display: flex;
         justify-content: center;
         padding: 20px;
+        margin-top: 20px;
 
         .header_user_active_container {
             color: #fff;
         }
 
+        .header_user_name {
+            font-size: 18px;
+        }
+
         .header_user_buttonLogOut {
             color: #fff;
+            font-size: 18px;
         }
 
         img {
-            width: 30px;
+            width: 50px;
             border-radius: 50%;
         }
     }

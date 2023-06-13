@@ -11,12 +11,10 @@ const SearchForm = (props) => {
     const {setTotalDocs, setRiskFactors, setDocuments} = props;
     const [isLoading, setIsLoading] = useState(false);
 
-    const { register, formState: { errors }, reset, handleSubmit } = useForm();
+    const { register, formState: { errors }, handleSubmit } = useForm();
     const onSubmit = (data) => {
-      setIsLoading(true);
       histograms(data);
       objectSearch(data);
-      reset();
     }
     
     async function histograms(data) {
@@ -155,16 +153,19 @@ const SearchForm = (props) => {
 
 
     async function documents(ids) {
+      setIsLoading(true);
       await api.post('/api/v1/documents', {
         ids: ids
       })
       .then((response) => {
         setDocuments(response.data);
         localStorage.setItem('documents', JSON.stringify(response.data));
+        setIsLoading(false);
         toResultPage();
       })
       .catch((error) => {
         console.log(error);
+        setIsLoading(false);
       })
     }
 
