@@ -1,11 +1,10 @@
-import React from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./result.scss";
 import resultImage from "../../assets/images/result-image-hero.png";
 import ResultSlider from "../../components/ResultSlider/ResultSlider";
-import ResultCards from "../../components/ResultCards/ResultCards";
-import { useNavigate } from "react-router-dom";
+import ResultsDocuments from "../../components/ResultsDocuments/ResultsDocuments";
 import { Loader } from "../../components/loader/Loader";
+import Pagination from "../../components/Pagination/Pagination";
 
 
 const Result = (props) => {
@@ -19,15 +18,21 @@ const Result = (props) => {
           setDocuments();
         }
     },[]);
+
     
-    const navigate = useNavigate();
-    function toSearchPage() {
-        navigate("/search");
-    }
+    const [currentPage, setCurrentPage] = useState(1);
+    const [documentsPerPage] = useState(10);
+
+    const lastDocIndex = currentPage * documentsPerPage;
+    const firstDocIndex = lastDocIndex - documentsPerPage;
+    const currentDoc = documents.slice(firstDocIndex, lastDocIndex);
+
+    const paginate = pageNumber => setCurrentPage(pageNumber);
 
     return(
         <>
             <div className="container">
+
                 <div className="result_header">
                     <div className="result_header_text">
                         <h1 className="title result_title">Ищем. Скоро будут результаты</h1>
@@ -37,38 +42,30 @@ const Result = (props) => {
                         <img className="result_img" src={resultImage} alt="img"/>
                     </div>
                 </div>
+
                 <div className="result_main">
                     <div className="title list_title">Общая сводка</div>
                     <span className="list_subtitle">Найдено  {docsInStorage !== null ? documents.length : ""} вариантов</span>
+
                     <div className="result_data_slider">
                         <ResultSlider totalDocs={totalDocs} riskFactors={riskFactors} setTotalDocs={setTotalDocs} setRiskFactors={setRiskFactors} />
                     </div>
-                    <h1 className="title list_title">Список документов</h1>
 
-                    {docsInStorage !== null && documents.length > 0
-                      ?
+                    <h1 className="title list_title">Список документов</h1>
+                    {docsInStorage || documents.length > 0 ? 
                         <>
                         <div className="documents_results_container">
-                            {documents.map((doc) => {
-                                return(
-                                    <ResultCards key={doc.ok.id} doc={doc.ok}/>
-                                )
-                            })}
+                            <ResultsDocuments documents={currentDoc} />
                         </div>
-                        
-                        {docsInStorage !== null && documents.length > 10 ?
-                            <div className="rusults_main_btn">
-                                <button className="results_button">Показать больше</button>
-                            </div>
-                            : <></>
-                        }
+                        <Pagination documentsPerPage={documentsPerPage} totalDocuments={documents.length} paginate={paginate} />
                         </>
-                      :
+                    :   
                         <div className="documents_none_results_container">
                             <Loader />
                             <h2 className="title documents_none_results_title">Загружаю данные ...</h2>
-                        </div> 
+                        </div>
                     }
+                     
                 </div>
             </div>
         </>

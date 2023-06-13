@@ -26,8 +26,8 @@ const AccountInfo = () => {
                 </div>
             :
                 <>
-                    <div className="header_account_info_text">Использовано компаний <span>{items.usedCompanyCount}</span></div>
-                    <div className="header_account_info_text">Лимит по компаниям <span className="header_account_info_span">{items.companyLimit}</span></div>  
+                    <div className="header_account_info_text">Использовано компаний: <span>{items.usedCompanyCount}</span></div>
+                    <div className="header_account_info_text">Лимит по компаниям: <span className="header_account_info_span">{items.companyLimit}</span></div>  
                 </>
             }
         </div>

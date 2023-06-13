@@ -169,18 +169,18 @@ const SearchForm = (props) => {
     }
 
     
-    const [inn, setInn] = useState('');
-    const [tonality, setTonality] = useState("any");
-    const [limit, setLimit] = useState('');
-    const [maxFullness, setMaxFullness] = useState(true);
-    const [onlyMainRole, setOnlyMainRole] = useState(true);
-    const [inBusinessNews, setInBusinessNews] = useState(true);
-    const [onlyWithRiskFactors, setOnlyWithRiskFactors] = useState(false);
-    const [isTechNews, setTechNews] = useState(false);
-    const [isAnnouncement, setAnnouncement] = useState(true);
-    const [isDigest, setDigest] = useState(false);
-    const [startDate, setStartDate] = useState('');
-    const [endDate, setEndDate] = useState('');
+    const [inn] = useState('');
+    const [tonality] = useState("any");
+    const [limit] = useState('');
+    const [maxFullness] = useState(true);
+    const [onlyMainRole] = useState(true);
+    const [inBusinessNews] = useState(true);
+    const [onlyWithRiskFactors] = useState(false);
+    const [isTechNews] = useState(false);
+    const [isAnnouncement] = useState(true);
+    const [isDigest] = useState(false);
+    const [startDate] = useState('');
+    const [endDate] = useState('');
 
     const errorSearchFormStyle = {
         fontSize: '10px',
