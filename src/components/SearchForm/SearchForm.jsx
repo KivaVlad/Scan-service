@@ -80,7 +80,6 @@ const SearchForm = (props) => {
         setRiskFactors(res.data.data[1].data);
         localStorage.setItem('totalDocs', JSON.stringify(res.data.data[0].data));
         localStorage.setItem('riskFactors', JSON.stringify(res.data.data[1].data));
-        toResultPage();
       })
       .catch((error) => {
         console.log(error);
@@ -162,6 +161,7 @@ const SearchForm = (props) => {
       .then((response) => {
         setDocuments(response.data);
         localStorage.setItem('documents', JSON.stringify(response.data));
+        toResultPage();
       })
       .catch((error) => {
         console.log(error);
