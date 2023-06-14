@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { lazy, Suspense } from "react";
 import { Outlet } from "react-router-dom";
 import Header from "../header/Header";
 import { Loader } from "../loader/Loader";
