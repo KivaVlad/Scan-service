@@ -11,11 +11,11 @@ const Layout = (props) => {
         <>
             <Header isLogged={isLogged} setIsLogged={setIsLogged}/>
 
-                <main className="container">
-                    <Suspense fallback={<div className="lazy_container"><Loader /></div>}>
-                        <Outlet />
-                    </Suspense>
-                </main>
+            <main>
+                <Suspense fallback={<div className="lazy_container"><Loader /></div>}>
+                    <Outlet />
+                </Suspense>
+            </main>
                 
             <Footer />
         </>
