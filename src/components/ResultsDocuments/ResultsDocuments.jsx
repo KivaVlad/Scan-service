@@ -1,17 +1,23 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import "../../pages/ResultPage/result.scss";
-import ResultCards from "../ResultCards/ResultCards";
+
+const ResultCards = lazy(() => import("../ResultCards/ResultCards"))
+
 
 const ResultsDocuments = (props) => {
     const {documents} = props;
 
     return(
         <>
-            {documents.map((doc) => {
-                return(
-                    <ResultCards key={doc.ok.id} doc={doc.ok}/>
-                )
-            })}
+            <Suspense fallback={<div>...</div>}>
+                <>
+                    {documents.map((doc) => {
+                        return(
+                            <ResultCards key={doc.ok.id} doc={doc.ok}/>
+                        )
+                    })}
+                </>
+            </Suspense>
         </>
     )
 }

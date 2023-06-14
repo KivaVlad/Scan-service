@@ -5,7 +5,7 @@ import ResultSlider from "../../components/ResultSlider/ResultSlider";
 import { Loader } from "../../components/loader/Loader";
 import Pagination from "../../components/Pagination/Pagination";
 
-const ResultsDocuments = lazy(() => import('../../components/ResultsDocuments/ResultsDocuments'))
+const ResultsDocuments = lazy(() => import('../../components/ResultsDocuments/ResultsDocuments'));
 
 
 const Result = (props) => {
