@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./pagination.scss";
 
+
 const Pagination = (props) => {
     const { documentsPerPage, totalDocuments, paginate} = props;
     const pageNumbers = [];
@@ -8,6 +9,7 @@ const Pagination = (props) => {
     for (let i = 1; i <= Math.ceil(totalDocuments / documentsPerPage); i++) {
         pageNumbers.push(i);
     }
+
 
     const [isScrolling, setIsScrolling] = useState(false);
 
@@ -27,11 +29,11 @@ const Pagination = (props) => {
                 pageNumbers.map((number) => (
                     <div className="pagination_item" key={number}>
                         <button 
+                            className="pagination_btn"
                             onClick={() => {
                                 handleScroll();
                                 paginate(number);
                             }} 
-                            className="pagination_btn"
                         >
                             {number}
                         </button>

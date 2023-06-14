@@ -200,7 +200,7 @@ const SearchForm = (props) => {
                 <div className="search_wrapper_top">
                     <div className="search_wrapper_inputs">
 
-                        <h3 className='search_form_text'>ИНН компании* 9701078611</h3>
+                        <h3 className='search_form_text'>ИНН компании* 7710137066</h3>
                         <input className="search_form_input"
                             {...register("inn",{ required: true, minLength: 10, maxLength: 10, value: inn })} 
                             aria-invalid={errors.inn ? "true" : "false"} 

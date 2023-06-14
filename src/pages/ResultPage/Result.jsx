@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, lazy, Suspense } from "react";
 import "./result.scss";
 import resultImage from "../../assets/images/result-image-hero.png";
 import ResultSlider from "../../components/ResultSlider/ResultSlider";
-import ResultsDocuments from "../../components/ResultsDocuments/ResultsDocuments";
 import { Loader } from "../../components/loader/Loader";
 import Pagination from "../../components/Pagination/Pagination";
+
+const ResultsDocuments = lazy(() => import('../../components/ResultsDocuments/ResultsDocuments'))
 
 
 const Result = (props) => {
@@ -14,10 +15,8 @@ const Result = (props) => {
     useEffect(() => {
         if(docsInStorage !== null) {
             setDocuments(docsInStorage);
-        } else {
-          setDocuments();
         }
-    },[]);
+    }, []);
 
     
     const [currentPage, setCurrentPage] = useState(1);
@@ -55,7 +54,9 @@ const Result = (props) => {
                     {docsInStorage || documents.length > 0 ? 
                         <>
                         <div className="documents_results_container">
-                            <ResultsDocuments documents={currentDoc} />
+                            <Suspense fallback={<div className="lazy_container"><Loader /></div>}>
+                                <ResultsDocuments documents={currentDoc} />
+                            </Suspense>
                         </div>
                         <Pagination documentsPerPage={documentsPerPage} totalDocuments={documents.length} paginate={paginate} />
                         </>

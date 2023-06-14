@@ -1,13 +1,13 @@
-import React from "react";
+import React, { lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import Layout from "./components/Layout/Layout";
-import HomePage from "./pages/HomePage/Home";
-import LoginPage from "./pages/LoginPage/LoginPage";
-import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
-import SearchPage from "./pages/SearchPage/SearchPage";
-import Result from "./pages/ResultPage/Result";
+const HomePage = lazy(() => import("./pages/HomePage/Home"));
+const LoginPage = lazy(() => import("./pages/LoginPage/LoginPage"));
+const SearchPage = lazy(() => import("./pages/SearchPage/SearchPage"));
+const Result = lazy(() => import("./pages/ResultPage/Result"));
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFoundPage"));
 
 
 function App() {
@@ -23,6 +23,7 @@ function App() {
       setIsLogged(false);
     }
   }, [setIsLogged]);
+
 
   return (
     <>

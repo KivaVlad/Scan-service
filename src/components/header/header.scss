@@ -194,14 +194,14 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        margin-top: 40px;
+        margin-top: 20px;
     }
 
     .header_nav_user_active {
         display: flex;
         justify-content: center;
         padding: 20px;
-        margin-top: 20px;
+        margin-top: 10px;
 
         .header_user_active_container {
             color: #fff;
@@ -316,7 +316,7 @@
 
 @media (max-width: 450px) {
     .header_nav_items {
-        margin-top: 60px;
+        margin-top: 50px;
     }
 
     .header_nav_items_link{
