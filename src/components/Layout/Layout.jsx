@@ -7,25 +7,16 @@ const Footer = lazy(() => import("../footer/Footer"));
 
 
 const Layout = (props) => {
-    const {isLogged, setIsLogged} = props;
 
     return(
         <>
-            <header>
-                <Header isLogged={isLogged} setIsLogged={setIsLogged}/>
-            </header>
+            <Header {...props}/>
 
-            <main>
-                <Suspense fallback={<div className="lazy_container"><Loader /></div>}>
-                    <Outlet />
-                </Suspense>
-            </main>
+            <Suspense fallback={<div className="lazy_container"><Loader /></div>}>
+                <Outlet />
+                <Footer />
+            </Suspense>
                 
-            <footer>
-                <Suspense fallback={<div className="lazy_container"><Loader /></div>}>
-                    <Footer />
-                </Suspense>
-            </footer>
         </>
     )
 }
