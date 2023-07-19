@@ -26,6 +26,10 @@
     font-weight: 400;
     font-size: 16px;
     color: #949494;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 75%;
 }
 
 .documents_card_title {
