@@ -22,6 +22,7 @@ const LoginForm = (props) => {
         setIsLoading(true);
         api.post('/api/v1/account/login', data)
         .then((response) => {
+            setIsLoading(false);
             localStorage.setItem("token", response.data.accessToken);
             localStorage.setItem("expire", response.data.expire);
             setIsLogged(true);

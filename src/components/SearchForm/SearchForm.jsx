@@ -10,9 +10,10 @@ import "./searchForm.scss";
 const SearchForm = (props) => {
     const {setTotalDocs, setRiskFactors, setDocuments} = props;
     const [isLoading, setIsLoading] = useState(false);
-
     const { register, formState: { errors }, handleSubmit } = useForm();
+
     const onSubmit = (data) => {
+      setIsLoading(true);
       histograms(data);
       objectSearch(data);
     }
@@ -148,13 +149,14 @@ const SearchForm = (props) => {
       })
       .catch((error) => {
         console.log(error);
+        setIsLoading(false);
       });
     }
 
 
     async function documents(ids) {
-      setIsLoading(true);
-      await api.post('/api/v1/documents', {
+      await 
+      api.post('/api/v1/documents', {
         ids: ids
       })
       .then((response) => {
@@ -191,6 +193,7 @@ const SearchForm = (props) => {
                             {...register("inn",{ required: true, minLength: 10, maxLength: 10 })} 
                             aria-invalid={errors.inn ? "true" : "false"} 
                             type='number'
+                            autoComplete="off"
                             placeholder="10 цифр"
                         />
                         <div className='search_errors_form_string'>
@@ -213,6 +216,7 @@ const SearchForm = (props) => {
                             {...register("limit", { required: true, minLength: 1, maxLength: 1000 })} 
                             aria-invalid={errors.limit ? "true" : "false"} 
                             type='number'
+                            autoComplete="off"
                             placeholder="От 1 до 1000"
                         />
                         <div className='search_errors_form_string'>
