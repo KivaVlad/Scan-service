@@ -22,12 +22,12 @@ const SearchPage = (props) => {
 
                     <div className="search_content_images">
                         <div className="search_content_images_top">
-                            <img className="search_content_images_top_doc" src={documentImg} />
-                            <img className="search_content_images_top_folders" src={folders} />
+                            <img className="search_content_images_top_doc" src={documentImg} alt="" />
+                            <img className="search_content_images_top_folders" src={folders} alt="" />
                         </div>
 
                         <div className="search_content_images_bottom">
-                            <img className="search_content_images_bottom_ch" src={searchImg} />
+                            <img className="search_content_images_bottom_ch" src={searchImg} alt="" />
                         </div>
                     </div>
                 </div>

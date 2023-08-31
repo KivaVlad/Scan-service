@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useRef } from "react";
 import { Loader } from "../loader/Loader";
 
@@ -17,7 +17,7 @@ const ResultSlider = (props) => {
         } else {
           setTotalDocs();
         }
-    },[]);
+    },[myTotalDocs, setTotalDocs]);
 
     useEffect(() => {
         if(myRiskFactors !== null) {
@@ -25,8 +25,9 @@ const ResultSlider = (props) => {
         } else {
           setRiskFactors();
         }
-    },[]);
+    },[myRiskFactors, setRiskFactors]);
         
+    // Слайдер
     const slider = useRef(null);
     let position = 0;
 
@@ -48,7 +49,7 @@ const ResultSlider = (props) => {
     if (myTotalDocs !== null) {
     return(
             <div className="slider_section">
-                <button onClick={prevHandler} className="slider_section_button"><img src={arrowLeft}/></button>
+                <button onClick={prevHandler} className="slider_section_button"><img src={arrowLeft} alt=""/></button>
                 <div className="slider_container">
                     <div className="slider_container_info">
                         <span className="slider_container_info_text">Период</span>
@@ -67,13 +68,13 @@ const ResultSlider = (props) => {
                         })}
                     </div>
                 </div>
-                <button onClick={nextHandler} className="slider_section_button"><img src={arrowRight}/></button>
+                <button onClick={nextHandler} className="slider_section_button"><img src={arrowRight} alt=""/></button>
             </div>
         )
     } else {
         return (
             <div className="slider_section">
-            <button className="slider_section_button"><img src={arrowLeft}/></button>
+            <button className="slider_section_button"><img src={arrowLeft} alt=""/></button>
             <div className="slider_container">
                 <div className="slider_container_info">
                     <span className="slider_container_info_text">Период</span>
@@ -84,7 +85,7 @@ const ResultSlider = (props) => {
                     <Loader /> <h2 className="slider_loader_text">Загружаем данные...</h2>
                 </div>
             </div>
-            <button className="slider_section_button"><img src={arrowRight}/></button>
+            <button className="slider_section_button"><img src={arrowRight} alt=""/></button>
         </div>
         )
     }

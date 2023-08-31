@@ -21,32 +21,32 @@ export default class FocusOnSelect extends Component {
       <div className='slider_cards'>
         <Slider {...settings}>
           <div className='slider_card'>
-            <img src={stopWatch} />
+            <img src={stopWatch} alt="" />
             <p>Высокая и оперативная скорость <br/>обработки заявки</p>
           </div>
 
           <div className='slider_card'>
-            <img src={loop} />
+            <img src={loop} alt="" />
             <p>Огромная комплексная база <br/>данных, обеспечивающая <br/>объективный ответ на запрос</p>
           </div>
 
           <div className='slider_card'>
-            <img src={lock} />
+            <img src={lock} alt="" />
             <p>Защита конфеденциальных сведений, <br/>не подлежащих разглашению по <br/>федеральному законодательству</p>
           </div>
 
           <div className='slider_card'>
-            <img src={stopWatch} />
+            <img src={stopWatch} alt="" />
             <p>Высокая и оперативная скорость <br/>обработки заявки</p>
           </div>
 
           <div className='slider_card'>
-            <img src={loop} />
+            <img src={loop} alt="" />
             <p>Огромная комплексная база <br/>данных, обеспечивающая <br/>объективный ответ на запрос</p>
           </div>
 
           <div className='slider_card'>
-            <img src={lock} />
+            <img src={lock} alt="" />
             <p>Защита конфеденциальных сведений, <br/>не подлежащих разглашению по <br/>федеральному законодательству</p>
           </div>
 

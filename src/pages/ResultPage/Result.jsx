@@ -13,10 +13,10 @@ const Result = (props) => {
     const docsInStorage = JSON.parse(localStorage.getItem('documents'));
 
     useEffect(() => {
-        if(docsInStorage !== null) {
+        if(docsInStorage) {
             setDocuments(docsInStorage);
         }
-    }, []);
+    }, [setDocuments, docsInStorage]);
 
     
     const [currentPage, setCurrentPage] = useState(1);

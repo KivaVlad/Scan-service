@@ -13,27 +13,30 @@ import './loginform.scss';
 const LoginForm = (props) => {
     const {setIsLogged} = props;
     const [isLoading, setIsLoading] = useState(false);
-
-    
-    
+    const [errorsForm, setErrorsFrom] = useState(false);
+    const navigate = useNavigate();
     const { register, formState: { errors }, reset, handleSubmit } = useForm();
+
+
     function onSubmit(data) {
-        return api.post('/api/v1/account/login', data)
+        setIsLoading(true);
+        api.post('/api/v1/account/login', data)
         .then((response) => {
-            setIsLoading(true);
             localStorage.setItem("token", response.data.accessToken);
             localStorage.setItem("expire", response.data.expire);
             setIsLogged(true);
             reset();
             toHomePage();
+            setIsLoading(false);
         })
         .catch((error) => {
             console.log(error);
-            alert('Неверный логин или пароль');
+            setErrorsFrom(true);
+            setIsLoading(false);
         })
     }
 
-    const navigate = useNavigate();
+
     function toHomePage() {
         navigate('/');
     }
@@ -57,9 +60,10 @@ const LoginForm = (props) => {
                 {...register("login", { required: true })} 
                 aria-invalid={errors.text ? "true" : "false"} 
                 type='text'
+                autoComplete="off"
             />
             <div className='errors_form_string'>
-                {errors.login?.type === 'required' && <div style={errorFormStyle} role="alert">Введите корректные данные</div>}
+                {errors.login?.type === 'required' || errorsForm ? <div style={errorFormStyle} role="alert">Введите корректные данные</div> : <></>}
             </div>
 
             <h3 className='form_text'>Пароль: 4i2385j</h3>
@@ -69,7 +73,7 @@ const LoginForm = (props) => {
                 type="password" 
             />
             <div className='errors_form_string'>
-                {errors.password?.type === 'required' && <div style={errorFormStyle} role="alert">Неправильный пароль</div>}
+                {errors.password?.type === 'required' || errorsForm ? <div style={errorFormStyle} role="alert">Неправильный пароль</div> : <></>}
             </div>
 
             <button type='submit' className='form_button'>{isLoading ? (<ButtonLoader />) : 'Войти'}</button>

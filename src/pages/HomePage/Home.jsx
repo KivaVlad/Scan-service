@@ -31,7 +31,7 @@ const Home = ({isLogged}) => {
                     <button onClick={toSearchPage} className='home_header_button'>Запросить данные</button>
                 </div>
                 <div className='home_header_img'>
-                  <img src={homeImg} />
+                  <img src={homeImg} alt='hero'/>
                 </div>
             </div>
 
@@ -42,7 +42,7 @@ const Home = ({isLogged}) => {
 
             <div className='home_images'>
               <div className='home_user_img'>
-                <img src={homeUserImg} />
+                <img src={homeUserImg} alt='hero' />
               </div>
               <div className='vector_img'>
                 <div className='vector_bg'></div>
