@@ -14,7 +14,10 @@ const Layout = (props) => {
 
             <Suspense fallback={<div className="lazy_container"><Loader /></div>}>
                 <Outlet />
-                <Footer />
+                
+                <footer className="footer">
+                    <Footer />
+                </footer>
             </Suspense>
                 
         </>

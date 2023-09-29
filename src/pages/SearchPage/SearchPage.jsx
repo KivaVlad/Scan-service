@@ -9,7 +9,7 @@ import documentImg from "../../assets/images/Document.png";
 const SearchPage = (props) => {
 
     return(
-        <>
+        <section className="search_section">
             <div className="container">
                 <div className="search_content">
                     <div className="search_content_text">
@@ -32,7 +32,7 @@ const SearchPage = (props) => {
                     </div>
                 </div>
             </div>
-        </>
+        </section>
     )
 }
 

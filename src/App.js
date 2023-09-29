@@ -17,7 +17,10 @@ function App() {
   const [isLogged, setIsLogged] = useState(false);
 
   useEffect(() => {
-    if(localStorage.getItem("token") || localStorage.getItem("expire") !== null) {
+    const expireToken = new Date(localStorage.getItem("expire"));
+    const nowDate = new Date();
+
+    if(expireToken > nowDate) {
       setIsLogged(true);
     } else {
       setIsLogged(false);

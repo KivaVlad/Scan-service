@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useRef } from "react";
-import { Loader } from "../loader/Loader";
 
 import "./resultSlider.scss";
 import arrowLeft from "../carousel/items/arrow-left.png";
@@ -8,29 +7,25 @@ import arrowRight from "../carousel/items/arrow-right.png";
 
 const ResultSlider = (props) => {
     const {totalDocs, riskFactors, setTotalDocs, setRiskFactors} = props;
-    const myTotalDocs = JSON.parse(localStorage.getItem('totalDocs'));
-    const myRiskFactors = JSON.parse(localStorage.getItem('riskFactors'));
+    const slider = useRef(null);
+    let position = 0;
+    
 
     useEffect(() => {
-        if(myTotalDocs !== null) {
-            setTotalDocs(myTotalDocs);
-        } else {
-          setTotalDocs();
+        if(localStorage.getItem('totalDocs') !== null) {
+            setTotalDocs(JSON.parse(localStorage.getItem('totalDocs')));
         }
-    },[myTotalDocs, setTotalDocs]);
+    },[setTotalDocs]);
 
     useEffect(() => {
-        if(myRiskFactors !== null) {
-            setRiskFactors(myRiskFactors);
+        if(localStorage.getItem('riskFactors') !== null) {
+            setRiskFactors(JSON.parse(localStorage.getItem('riskFactors')));
         } else {
           setRiskFactors();
         }
-    },[myRiskFactors, setRiskFactors]);
+    },[setRiskFactors]);
         
     // Слайдер
-    const slider = useRef(null);
-    let position = 0;
-
     const prevHandler = () => {
         position += 150
         slider.current.childNodes.forEach((element) => {
@@ -46,49 +41,34 @@ const ResultSlider = (props) => {
     }
 
 
-    if (myTotalDocs !== null) {
     return(
-            <div className="slider_section">
-                <button onClick={prevHandler} className="slider_section_button"><img src={arrowLeft} alt=""/></button>
-                <div className="slider_container">
-                    <div className="slider_container_info">
-                        <span className="slider_container_info_text">Период</span>
-                        <span className="slider_container_info_text">Всего</span>
-                        <span className="slider_container_info_text">Риски</span>
-                    </div>
-                    <div ref={slider} className="slider_wrapper">
-                        {totalDocs.map((element, id) => {
-                            return(
-                                <div className="slider_res_content" key={id}>
-                                    <div className="slider_res_content_text">{element.date.substr(0, 10)}</div>
-                                    <div className="slider_res_content_text">{element.value}</div>
-                                    <div className="slider_res_content_text">{riskFactors[id].value}</div>
-                                </div>
-                            )
-                        })}
-                    </div>
-                </div>
-                <button onClick={nextHandler} className="slider_section_button"><img src={arrowRight} alt=""/></button>
-            </div>
-        )
-    } else {
-        return (
-            <div className="slider_section">
-            <button className="slider_section_button"><img src={arrowLeft} alt=""/></button>
+        <div className="slider_section">
+
+            <button onClick={prevHandler} className="slider_section_button"><img src={arrowLeft} alt=""/></button>
+
             <div className="slider_container">
                 <div className="slider_container_info">
                     <span className="slider_container_info_text">Период</span>
                     <span className="slider_container_info_text">Всего</span>
                     <span className="slider_container_info_text">Риски</span>
                 </div>
-                <div className="loader_wrapper">
-                    <Loader /> <h2 className="slider_loader_text">Загружаем данные...</h2>
+                <div ref={slider} className="slider_wrapper">
+                    {totalDocs.map((element, id) => {
+                        return(
+                            <div className="slider_res_content" key={id}>
+                                <div className="slider_res_content_text">{element.date.substr(0, 10)}</div>
+                                <div className="slider_res_content_text">{element.value}</div>
+                                <div className="slider_res_content_text">{riskFactors[id].value}</div>
+                            </div>
+                        )
+                    })}
                 </div>
             </div>
-            <button className="slider_section_button"><img src={arrowRight} alt=""/></button>
+
+            <button onClick={nextHandler} className="slider_section_button"><img src={arrowRight} alt=""/></button>
+
         </div>
-        )
-    }
+    )
 }
 
 export default ResultSlider;

@@ -80,6 +80,9 @@ const SearchForm = (props) => {
         localStorage.setItem('totalDocs', JSON.stringify(res.data.data[0].data));
         localStorage.setItem('riskFactors', JSON.stringify(res.data.data[1].data));
       })
+      .then(() => {
+        
+      })
       .catch((error) => {
         console.log(error);
         alert('Что-то пошло не так. Попробуйте еще раз');
